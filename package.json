@@ -1,0 +1,28 @@
+{
+  "name": "me",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Ariel Villarreal <arirecate_6@hotmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "^10.0.5",
+    "next-seo": "^4.20.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "sass": "^1.32.8",
+    "swiper": "^6.4.15"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.22",
+    "@types/react": "^17.0.0",
+    "autoprefixer": "^10.2.3",
+    "postcss": "^8.2.4",
+    "tailwindcss": "^2.0.2",
+    "typescript": "^4.1.3"
+  }
+}
