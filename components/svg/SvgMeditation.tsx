@@ -1,18 +1,19 @@
 import { useEffect } from "react";
 
-const SvgMeditation = (props) => {
+const SvgMeditation = (props: React.SVGProps<SVGSVGElement>) => {
 
 	useEffect(() => {
 		const starShipElements = document.querySelectorAll('.starShip')
 		const removeEventAndAnimate = () => {
-			starShipElements.forEach((starShip: HTMLElement) => {
-				starShip.classList.add('animate-slideOutUp')
-				starShip.addEventListener('animationend', () => {
-					starShip.classList.add('hidden')
+			starShipElements.forEach((starShip) => {
+        const startShipHtml = starShip as HTMLElement
+				startShipHtml.classList.add('animate-slideOutUp');
+				startShipHtml.addEventListener('animationend', () => {
+					startShipHtml.classList.add('hidden')
 				})
 			})
 		}
-    document.querySelector('body').addEventListener('touchmove', () => {
+    document.querySelector('body')?.addEventListener('touchmove', () => {
       removeEventAndAnimate()
     }, { once: true })
 	}, [])

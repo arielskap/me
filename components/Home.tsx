@@ -2,7 +2,7 @@ import SvgMeditation from "./svg/SvgMeditation"
 
 const Home = () => {
 	return (
-		<section className='flex flex-col pt-16' id='home'>
+		<section className='flex flex-col pt-16'>
 			<p className='text-blue-300'>¡Hola, Mundo! Mi nombre es</p>
 			<h2 className='text-3xl'>Ariel Villarreal.</h2>
 			<p className='pb-4 text-red-300'>Y me especializo en el desarrollo web.</p>

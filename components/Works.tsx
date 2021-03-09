@@ -6,7 +6,7 @@ SwiperCore.use([Autoplay])
 
 const Works = () => {
 	return (
-		<section id='works' className='pt-16'>
+		<section className='pt-16'>
 			<h2 className='pb-4 text-4xl text-center'>Trabajos</h2>
 			<div className='px-12'>
 				<div className='relative'>
