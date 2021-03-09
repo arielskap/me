@@ -2,10 +2,11 @@ import { useContext, useEffect, useRef, useState } from "react"
 import colors from 'tailwindcss/colors'
 import { Context } from "../SliderContext"
 
+let flag = false;
+
 const Header: React.FunctionComponent = () => {
 	const { swiper } = useContext(Context)
-	const [menuOpen, setMenuOpen] = useState(false)
-	const open = useRef(false)
+	const [menuOpen, setMenuOpen] = useState<boolean>(false)
 	const navBgMenu = useRef<HTMLElement>(null)
 	const pIconMenu = useRef<HTMLParagraphElement>(null)
 	const divContainerMenu = useRef<HTMLDivElement>(null)
@@ -15,20 +16,21 @@ const Header: React.FunctionComponent = () => {
 	}
 
 	useEffect(() => {
-		if (menuOpen) {
-			pIconMenu.current?.classList.replace('text-pink-500', 'text-white')
-			navBgMenu.current?.classList.replace('animate-slideOutUp', 'animate-slideInDown')
-			navBgMenu.current?.classList.replace('hidden', 'block')
-			divContainerMenu.current?.classList.replace('bg-primary', 'bg-transparent')
-		} else if(menuOpen === false) {
-			pIconMenu.current?.classList.replace('text-white', 'text-pink-500')
-			navBgMenu.current?.classList.replace('animate-slideInDown', 'animate-slideOutUp')
-			navBgMenu.current?.addEventListener('animationend', () => {
-				navBgMenu.current?.classList.replace('block', 'hidden')
-				divContainerMenu.current?.classList.replace('bg-transparent', 'bg-primary')
-			}, { once: true })
-		}
-		open.current = menuOpen
+		if (flag) {
+			if (menuOpen) {
+				pIconMenu.current?.classList.replace('text-pink-500', 'text-white')
+				navBgMenu.current?.classList.replace('animate-slideOutUp', 'animate-slideInDown')
+				navBgMenu.current?.classList.replace('hidden', 'block')
+				divContainerMenu.current?.classList.replace('bg-primary', 'bg-transparent')
+			} else if(menuOpen === false) {
+				pIconMenu.current?.classList.replace('text-white', 'text-pink-500')
+				navBgMenu.current?.classList.replace('animate-slideInDown', 'animate-slideOutUp')
+				navBgMenu.current?.addEventListener('animationend', () => {
+					navBgMenu.current?.classList.replace('block', 'hidden')
+					divContainerMenu.current?.classList.replace('bg-transparent', 'bg-primary')
+				}, { once: true })
+			}
+		} else flag = true
 	}, [menuOpen])
 
 	const handleChangePage = (numberPage: number, changeMenuState = true) => {
