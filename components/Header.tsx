@@ -22,7 +22,7 @@ const Header: React.FunctionComponent = () => {
 				navBgMenu.current?.classList.replace('animate-slideOutUp', 'animate-slideInDown')
 				navBgMenu.current?.classList.replace('hidden', 'block')
 				divContainerMenu.current?.classList.replace('bg-primary', 'bg-transparent')
-			} else if(menuOpen === false) {
+			} else if(!menuOpen) {
 				pIconMenu.current?.classList.replace('text-white', 'text-pink-500')
 				navBgMenu.current?.classList.replace('animate-slideInDown', 'animate-slideOutUp')
 				navBgMenu.current?.addEventListener('animationend', () => {

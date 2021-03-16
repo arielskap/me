@@ -15,7 +15,7 @@ const Works = () => {
 							return (
 								<SwiperSlide key={`slide-works-${title}`}>
 									<div>
-										<a href={href}>
+										<a target="_blank" href={href}>
 											<div className='relative p-1 border rounded border-lightBlue-500'>
 												<img className='rounded' src={img} alt={alt}/>
 												<div className='absolute top-0 left-0 z-20 flex items-center justify-center w-full h-full bg-black bg-opacity-75 rounded hover:bg-opacity-25'>

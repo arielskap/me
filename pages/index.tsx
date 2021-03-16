@@ -6,8 +6,14 @@ import { useContext } from 'react'
 import { Context } from '../SliderContext'
 import AboutMe from '../components/AboutMe'
 import Contact from '../components/Contact'
+import { GetStaticProps } from 'next'
+import { calcBirthday } from '../lib/functions'
 
-const Index = () => {
+interface Props {
+	birthday: number
+}
+
+const Index: React.FC<Props> = ({ birthday }) => {
 	let { setSwiper } = useContext(Context)
 
 	return (
@@ -21,7 +27,7 @@ const Index = () => {
 						<Works/>
 					</SwiperSlide>
 					<SwiperSlide>
-						<AboutMe/>
+						<AboutMe birthday={birthday} />
 					</SwiperSlide>
 					<SwiperSlide>
 						<Contact/>
@@ -30,6 +36,11 @@ const Index = () => {
 			</div>
 		</Layout>
 	)
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const birthday = calcBirthday('03/09/1998')
+  return { props: { birthday } }
 }
 
 export default Index

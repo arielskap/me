@@ -17,6 +17,8 @@ module.exports = {
       animation: {
 				slideOutUp: `slideOutUp .50s ease-in-out`,
 				slideInDown: `slideInDown .75s ease-in-out`,
+				rotate: `rotate 10s linear infinite`,
+				shootingStar: `shootingStar 2s linear`,
 			},
       keyframes: {
         slideOutUp: {
@@ -39,6 +41,24 @@ module.exports = {
 						transform: `translate3d(0, 0, 0)`
 					}
 				},
+				rotate: {
+					from: {
+						transform: `rotate(0deg)`
+					},
+					to: {
+						transform: `rotate(360deg)`
+					}
+				},
+				shootingStar: {
+					from: {
+						top: '-50vh',
+						right: '-100vw'
+					},
+					to: {
+						top: '50vh',
+						right: '100vw'
+					}
+				}
       }
     },
   },
