@@ -50,8 +50,8 @@ const Header: React.FunctionComponent = () => {
 				</button>
 				<button type='button' className={`relative w-6 h-4 cursor-pointer menuIcon ${menuOpen ? 'open' : 'close' }`} onClick={() => handleMenuState(setMenuOpen)}/>
 			</div>
-			<nav ref={navBgMenu} className='absolute top-0 z-10 hidden w-screen h-screen text-white animate-slideOutUp bg-gradient-to-r from-secondary via-pink-700 to-red-500'>
-				<ul className='flex flex-col items-center justify-center h-full space-y-6 text-5xl'>
+			<nav ref={navBgMenu} className='absolute top-0 z-10 hidden w-screen h-screen text-white navBgMenu animate-slideOutUp bg-secondary'>
+				<ul className='flex flex-col items-center justify-center h-full space-y-6 text-5xl bg-black bg-opacity-40'>
 					<li>
 						<button type='button' onClick={() => handleChangePage(0)}>Home</button>
 					</li>
@@ -102,7 +102,12 @@ const Header: React.FunctionComponent = () => {
 					top: 50%;
 					transform: rotate(45deg) translate3d(0, -50%, 0);
 				}
-
+				.navBgMenu {
+					background-image: url("/spacePink.jpg");
+					background-repeat: no-repeat;
+					background-position: center;
+					background-size: cover;
+				}
 			`}</style>
 		</header>
 	)

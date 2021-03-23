@@ -15,8 +15,9 @@ const Contact = () => {
 						objectFit="cover"
 						objectPosition="right"
 						className='rounded-full'
-						/>
-						<div id='img-border' className='absolute top-0 left-0 w-full h-full rounded-full' />
+						priority={true}
+					/>
+					<div id='img-border' className='absolute top-0 left-0 w-full h-full rounded-full' />
 				</div>
 			</div>
 			<div className='space-y-4'>
