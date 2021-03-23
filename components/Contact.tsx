@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import SvgEmail from './svg/SvgEmail'
 import SvgPhone from './svg/SvgPhone'
+import colors from 'tailwindcss/colors'
 
 const Contact = () => {
 	return (
@@ -15,7 +16,7 @@ const Contact = () => {
 						objectPosition="right"
 						className='rounded-full'
 						/>
-						<div className='absolute top-0 left-0 w-full h-full border rounded-full border-lightBlue-500' />
+						<div id='img-border' className='absolute top-0 left-0 w-full h-full rounded-full' />
 				</div>
 			</div>
 			<div className='space-y-4'>
@@ -46,6 +47,14 @@ const Contact = () => {
 					<div style={{ zIndex: -10 }} className='absolute w-full h-full border-b border-l rounded border-lightBlue-500 right-1 top-1' />
 				</div>
 			</div>
+			<style jsx>{`
+				#img-border {
+					border-right: 1px solid ${colors.lightBlue[500]};
+					border-bottom: 1px solid ${colors.lightBlue[500]};
+					border-left: 1px solid ${colors.pink[500]};
+					border-top: 1px solid ${colors.pink[500]};
+				}
+			`}</style>
 		</section>
 	)
 }
