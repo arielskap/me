@@ -2,12 +2,14 @@ import SvgMeditation from "./svg/SvgMeditation"
 
 const Home = () => {
 	return (
-		<section className='flex flex-col pt-16'>
-			<p className='text-blue-300'>¡Hola, Mundo! Mi nombre es</p>
-			<h1 className='text-3xl'>Ariel Villarreal.</h1>
-			<p className='pb-4 text-red-300'>Y me especializo en el desarrollo web.</p>
-			<p className='pb-4 text-blue-300'>Tengo experiencia hace más de 4 años en el desarrollo de software. Siempre estoy construyendo el futuro, aprendiendo de la gente que me rodea e innovando en el camino.</p>
-			<SvgMeditation className='flex-grow object-contain' />
+		<section className='pt-16 md:pt-0 md:h-screen md:flex md:items-center md:justify-center'>
+			<div className='flex flex-col p-4 md:border md:border-lightBlue-500 md:mt-1 md:shadow-2xl'>
+				<p className='text-blue-300'>¡Hola, Mundo! Mi nombre es</p>
+				<h1 className='text-3xl md:text-7xl'>Ariel Villarreal.</h1>
+				<p className='pb-4 text-red-300 md:text-2xl'>Y me especializo en el desarrollo web.</p>
+				<p className='pb-4 text-blue-300 md:text-3xl'>Tengo experiencia hace más de 4 años en el desarrollo de software. Siempre estoy construyendo el futuro, aprendiendo de la gente que me rodea e innovando en el camino.</p>
+				<SvgMeditation className='flex-grow object-contain md:hidden md:max-w-xl md:mx-auto md:pt-24' />
+			</div>
 		</section>
 	)
 }
