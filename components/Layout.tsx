@@ -9,7 +9,7 @@ interface Props {
 
 const Layout: React.FunctionComponent<Props> = ({ children, title }) => {
 	return (
-		<section className='min-h-screen bg-primary'>
+		<section className='bg-primary'>
 			<NextSeo
 				title={title}
 				description='Ariel Santiago Villarreal Gutierrez | Full-Stack Developer | React NextJS NodeJS Express MongoDB MySQL'

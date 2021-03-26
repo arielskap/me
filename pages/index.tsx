@@ -8,6 +8,10 @@ import AboutMe from '../components/AboutMe'
 import Contact from '../components/Contact'
 import { GetStaticProps } from 'next'
 import { calcBirthday } from '../lib/functions'
+import SvgEmail from '../components/svg/SvgEmail'
+import SvgGithub from '../components/svg/SvgGithub'
+import SvgPhone from '../components/svg/SvgPhone'
+import { useIsDesktop } from '../hooks/useIsDesktop'
 
 interface Props {
 	birthday: number
@@ -15,30 +19,11 @@ interface Props {
 
 const Index: React.FC<Props> = ({ birthday }) => {
 	let { setSwiper } = useContext(Context)
-	const [isDesktop, setIsDesktop] = useState(false)
-
-	useEffect(() => {
-		const match = window.matchMedia('(min-width: 768px)');
-		match.addEventListener("change", (e) => {
-			if (e.matches) {
-				setIsDesktop(true)
-			} else {
-				setIsDesktop(false)
-			}
-		})
-		const comprobation = () => {
-			if (screen.width >= 768) {
-				setIsDesktop(true)
-			} else {
-				setIsDesktop(false)
-			}
-		}
-		comprobation()
-	}, [])
+	const [isDesktop] = useIsDesktop()
 
 	return (
 		<Layout title='Home'>
-			<div className='container px-2 mx-auto text-white'>
+			<div className='container relative px-2 mx-auto text-white'>
 				<Swiper direction={isDesktop ? 'horizontal': 'vertical'} onInit={(thisSwiper) => { setSwiper && setSwiper(thisSwiper) }}>
 					<SwiperSlide>
 						<Home/>
@@ -53,6 +38,13 @@ const Index: React.FC<Props> = ({ birthday }) => {
 						<Contact/>
 					</SwiperSlide>
 				</Swiper>
+				<div className='hidden md:absolute md:bottom-0 md:left-0 md:block md:w-full'>
+					<div className='flex items-center justify-center h-6'>
+						<SvgEmail className='object-contain h-full' />
+						<SvgGithub className='object-contain h-full' />
+						<SvgPhone className='object-contain h-full' />
+					</div>
+				</div>
 			</div>
 		</Layout>
 	)
