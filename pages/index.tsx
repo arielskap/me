@@ -2,15 +2,12 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import Layout from "../components/Layout"
 import Home from "../components/Home"
 import Works from '../components/Works'
-import { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
 import { Context } from '../SliderContext'
 import AboutMe from '../components/AboutMe'
 import Contact from '../components/Contact'
 import { GetStaticProps } from 'next'
 import { calcBirthday } from '../lib/functions'
-import SvgEmail from '../components/svg/SvgEmail'
-import SvgGithub from '../components/svg/SvgGithub'
-import SvgPhone from '../components/svg/SvgPhone'
 import { useIsDesktop } from '../hooks/useIsDesktop'
 
 interface Props {
@@ -24,7 +21,7 @@ const Index: React.FC<Props> = ({ birthday }) => {
 	return (
 		<Layout title='Home'>
 			<div className='container relative px-2 mx-auto text-white'>
-				<Swiper direction={isDesktop ? 'horizontal': 'vertical'} onInit={(thisSwiper) => { setSwiper && setSwiper(thisSwiper) }}>
+				<Swiper spaceBetween={isDesktop ? 30 : 0} direction={isDesktop ? 'horizontal': 'vertical'} onInit={(thisSwiper) => { setSwiper && setSwiper(thisSwiper) }}>
 					<SwiperSlide>
 						<Home/>
 					</SwiperSlide>
@@ -38,13 +35,6 @@ const Index: React.FC<Props> = ({ birthday }) => {
 						<Contact/>
 					</SwiperSlide>
 				</Swiper>
-				<div className='hidden md:absolute md:bottom-0 md:left-0 md:block md:w-full'>
-					<div className='flex items-center justify-center h-6'>
-						<SvgEmail className='object-contain h-full' />
-						<SvgGithub className='object-contain h-full' />
-						<SvgPhone className='object-contain h-full' />
-					</div>
-				</div>
 			</div>
 		</Layout>
 	)
