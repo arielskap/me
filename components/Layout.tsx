@@ -32,7 +32,7 @@ const Layout: React.FunctionComponent<Props> = ({ children, title }) => {
 			<style jsx>{`
 				@media (min-width: 768px) {
 					.bg-app {
-						background-image: url("/space2.jpg");
+						background-image: url("/spaceBg.jpg");
 						background-repeat: no-repeat;
 						background-position: center;
 						background-size: cover;
