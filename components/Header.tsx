@@ -1,4 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react"
+import Image from 'next/image'
 import colors from 'tailwindcss/colors'
 import { EMenu } from "../enums/EMenu";
 import { Context } from "../SliderContext"
@@ -36,7 +37,6 @@ const Header: React.FunctionComponent = () => {
 	}, [menuOpen])
 
 	useEffect(() => {
-		console.log(swiper);
 		if (swiper) {
 			swiper.on("slideChange", (s) => {
 				setTitle(EMenu[swiper.activeIndex])
@@ -54,7 +54,7 @@ const Header: React.FunctionComponent = () => {
 	}
 
 	return (
-		<header className='sticky top-0 left-0 z-10 w-full h-px'>
+		<header className='sticky top-0 left-0 z-20 w-full h-px'>
 			<div ref={divContainerMenu} className='container absolute top-0 left-0 right-0 z-20 flex items-center justify-between mx-auto transition-colors duration-300 border-b border-l border-r border-transparent bg-primary md:rounded-br-3xl md:rounded-bl-3xl md:border-lightBlue-500'>
 				<div className='p-4'>
 					<button type='button' onClick={() => handleChangePage(0, false)} className='p-1 border-b-2 border-r-2 border-pink-500 border-dotted rounded-full'>
@@ -65,19 +65,29 @@ const Header: React.FunctionComponent = () => {
 					<h2 className='text-4xl text-center text-white'>{title}</h2>
 				</div>
 				<div className='flex p-4'>
-					<button type='button' className={`relative w-6 h-4 cursor-pointer menuIcon ${menuOpen ? 'open' : 'close' }`} onClick={() => handleMenuState(setMenuOpen)}/>
+					<button aria-label="menu" type='button' className={`relative w-6 h-4 cursor-pointer menuIcon ${menuOpen ? 'open' : 'close' }`} onClick={() => handleMenuState(setMenuOpen)}/>
 				</div>
 			</div>
-			<nav ref={navBgMenu} className='absolute top-0 left-0 z-10 hidden w-screen h-screen text-white navBgMenu animate-slideOutUp bg-secondary'>
+			<nav ref={navBgMenu} className='absolute top-0 left-0 z-10 hidden w-screen h-screen text-white animate-slideOutUp bg-secondary'>
 				<ul className='flex flex-col items-center justify-center h-full space-y-6 text-5xl bg-black bg-opacity-40 md:pb-24'>
 					{Array.from( { length: ( Object.keys(EMenu).length  / 2 ) } ).map((_ , i) => {
 						return (
-							<li>
+							<li key={`button-menu-${i}`}>
 								<button type='button' onClick={() => handleChangePage(i)}>{EMenu[i]}</button>
 							</li>
 						)
 					})}
 				</ul>
+				<div className="absolute top-0 left-0 w-full h-full" style={{ zIndex: -10 }}>
+					<div className='relative w-full h-full'>
+						<Image
+							src="/spacePink.jpg"
+							layout="fill"
+							objectFit="cover"
+							objectPosition="center"
+						/>
+					</div>
+				</div>
 			</nav>
 			<style jsx>{`
 				.menuIcon:before {
@@ -114,12 +124,6 @@ const Header: React.FunctionComponent = () => {
 				.menuIcon.open:after {
 					top: 50%;
 					transform: rotate(45deg) translate3d(0, -50%, 0);
-				}
-				.navBgMenu {
-					background-image: url("/spacePink.jpg");
-					background-repeat: no-repeat;
-					background-position: center;
-					background-size: cover;
 				}
 			`}</style>
 		</header>

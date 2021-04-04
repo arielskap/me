@@ -2,32 +2,36 @@ import { useEffect, useRef } from "react"
 import SvgGalaxy from "./svg/SvgGalaxy"
 import SvgShootingStars from "./svg/SvgShootingStars"
 import { generateObserver } from '../lib/functions'
+import { useIsDesktop } from "../hooks/useIsDesktop"
 
 interface Props {
 	birthday: number
 }
 
 const AboutMe: React.FC<Props> = ({birthday}) => {
+	const [isDesktop] = useIsDesktop()
 	const divSvgGalaxy = useRef<HTMLDivElement>(null)
 	const divSvgShootingStars = useRef<HTMLDivElement>(null)
 	useEffect(() => {
-		const timeOut = Math.floor(Math.random() * (8000 - 2000)) + 2000;
-		if (divSvgGalaxy.current) {
-			generateObserver(() => {
-				setTimeout(() => {
-					if (divSvgShootingStars.current) {
-						divSvgShootingStars.current.classList.toggle('hidden')
-						divSvgShootingStars.current.classList.add('animate-shootingStar')
-						divSvgShootingStars.current.addEventListener('animationend', () => {
-							divSvgShootingStars.current?.classList.toggle('hidden')
-						})
-					}
-				}, timeOut);
-			}, { threshold: 1 }).observe(divSvgGalaxy.current)
+		if (isDesktop === false) {
+			const timeOut = Math.floor(Math.random() * (8000 - 2000)) + 2000;
+			if (divSvgGalaxy.current) {
+				generateObserver(() => {
+					setTimeout(() => {
+						if (divSvgShootingStars.current) {
+							divSvgShootingStars.current.classList.toggle('hidden')
+							divSvgShootingStars.current.classList.add('animate-shootingStar')
+							divSvgShootingStars.current.addEventListener('animationend', () => {
+								divSvgShootingStars.current?.classList.toggle('hidden')
+							})
+						}
+					}, timeOut);
+				}, { threshold: 1 }).observe(divSvgGalaxy.current)
+			}
 		}
-	}, [])
+	}, [isDesktop])
 	return (
-		<section className="md:pt-16 md:h-screen md:flex md:items-center md:justify-center" id="aboutMe">
+		<section className="md:pt-16 md:h-screen md:flex md:items-center md:justify-center md:px-16" id="aboutMe">
 			<div className='h-screen md:h-auto md:p-4 md:border md:border-lightBlue-500 md:shadow-2xl md:bg-primary md:bg-opacity-90 md:rounded-md'>
 				<h2 className='pt-16 pb-4 text-4xl text-center md:hidden'>Sobre Mí</h2>
 				<div className='md:grid md:grid-cols-4'>

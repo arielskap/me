@@ -1,11 +1,23 @@
-import Document, { DocumentContext } from 'next/document'
+import Document, { Html, Head, Main, NextScript, DocumentContext, DocumentInitialProps } from 'next/document'
 
 class MyDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext) {
-    const initialProps = await Document.getInitialProps(ctx)
+	static async getInitialProps( ctx: DocumentContext ): Promise<DocumentInitialProps> {
+		const initialProps = await Document.getInitialProps( ctx )
 
-    return initialProps
-  }
+		return initialProps
+	}
+
+	render(): JSX.Element {
+		return (
+			<Html>
+				<Head lang="es" />
+				<body>
+					<Main />
+					<NextScript />
+				</body>
+			</Html>
+		)
+	}
 }
 
 export default MyDocument

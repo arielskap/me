@@ -23,9 +23,9 @@ const WorkSwiper: React.FC<Props> = ({ works }) => {
 				allElements
 					.forEach( ( element ) => {
 						if (isIntersecting(element)) {
-							swiper.autoplay.start()
+							swiper.autoplay?.start()
 						} else {
-							swiper.autoplay.stop()
+							swiper.autoplay?.stop()
 						}
 					} )
 			}, { threshold: 1 } )
