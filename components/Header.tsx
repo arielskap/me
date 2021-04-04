@@ -82,10 +82,12 @@ const Header: React.FunctionComponent = () => {
 					<div className='relative w-full h-full'>
 						<Image
 							src="/spacePink.jpg"
+							alt="Space pink"
 							layout="fill"
 							objectFit="cover"
 							objectPosition="center"
 							priority={true}
+							quality={100}
 						/>
 					</div>
 				</div>

@@ -25,18 +25,21 @@ const Layout: React.FunctionComponent<Props> = ({ children, title }) => {
 			<NextSeo
 				title={title}
 				description='Ariel Santiago Villarreal Gutierrez | Full-Stack Developer | React NextJS NodeJS Express MongoDB MySQL'
-				canonical="https://www.arielvillarreal.com/"
+				// canonical="https://www.arielvillarreal.com/"
+				canonical="https://arielvillarreal.vercel.app/"
 			/>
 			<Header/>
 			{isDesktop && (
 				<div className="absolute top-0 left-0 w-full h-full">
 					<div className='relative w-full h-full'>
 						<Image
+							alt="space"
 							src="/spaceBg.jpg"
 							layout="fill"
 							objectFit="cover"
 							objectPosition="center"
 							priority={true}
+							quality={100}
 						/>
 					</div>
 				</div>
