@@ -20,18 +20,20 @@ const Header: React.FunctionComponent = () => {
 
 	useEffect(() => {
 		if (flag) {
-			if (menuOpen) {
-				pIconMenu.current?.classList.replace('text-pink-500', 'text-white')
-				navBgMenu.current?.classList.replace('animate-slideOutUp', 'animate-slideInDown')
-				navBgMenu.current?.classList.replace('hidden', 'block')
-				divContainerMenu.current?.classList.replace('bg-primary', 'bg-transparent')
-			} else if(!menuOpen) {
-				pIconMenu.current?.classList.replace('text-white', 'text-pink-500')
-				navBgMenu.current?.classList.replace('animate-slideInDown', 'animate-slideOutUp')
-				navBgMenu.current?.addEventListener('animationend', () => {
-					navBgMenu.current?.classList.replace('block', 'hidden')
-					divContainerMenu.current?.classList.replace('bg-transparent', 'bg-primary')
-				}, { once: true })
+			const navMenu = navBgMenu.current;
+			const iconMenu = pIconMenu.current;
+			if (navMenu && iconMenu) {
+				if (menuOpen) {
+					navMenu.classList.replace('close-menu', 'open-menu')
+					iconMenu.classList.replace('text-pink-500', 'text-white')
+					navMenu.classList.replace('animate-slideOutUp', 'animate-slideInDown')
+					navMenu.classList.replace('hidden', 'block')
+					divContainerMenu.current?.classList.replace('bg-primary', 'bg-transparent')
+				} else if(!menuOpen) {
+					navMenu.classList.replace('open-menu','close-menu')
+					iconMenu.classList.replace('text-white', 'text-pink-500')
+					navMenu.classList.replace('animate-slideInDown', 'animate-slideOutUp')
+				}
 			}
 		} else flag = true
 	}, [menuOpen])
@@ -43,6 +45,17 @@ const Header: React.FunctionComponent = () => {
 			})
 		}
 	}, [swiper])
+
+	useEffect(() => {
+		const hiddenMenu = () => {
+			const navMenu = navBgMenu.current;
+			if (navMenu && navMenu.classList.contains("close-menu")) {
+				navBgMenu.current?.classList.replace('block', 'hidden')
+				divContainerMenu.current?.classList.replace('bg-transparent', 'bg-primary')
+			}
+		}
+		navBgMenu.current?.addEventListener('animationend', hiddenMenu)
+	}, [])
 
 	const handleChangePage = (numberPage: number, changeMenuState = true) => {
 		if (swiper) {
@@ -68,7 +81,7 @@ const Header: React.FunctionComponent = () => {
 					<button aria-label="menu" type='button' className={`relative w-6 h-4 cursor-pointer menuIcon ${menuOpen ? 'open' : 'close' }`} onClick={() => handleMenuState(setMenuOpen)}/>
 				</div>
 			</div>
-			<nav ref={navBgMenu} className='absolute top-0 left-0 z-10 hidden w-screen h-screen text-white animate-slideOutUp bg-secondary'>
+			<nav ref={navBgMenu} className='absolute top-0 left-0 z-10 hidden w-screen h-screen text-white close-menu animate-slideOutUp bg-secondary'>
 				<ul className='flex flex-col items-center justify-center h-full space-y-6 text-5xl bg-black bg-opacity-40 md:pb-24'>
 					{Array.from( { length: ( Object.keys(EMenu).length  / 2 ) } ).map((_ , i) => {
 						return (

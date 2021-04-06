@@ -1,10 +1,10 @@
 import { useRef, useState, useEffect } from 'react';
-import SwiperCore, { Autoplay } from 'swiper';
+import SwiperCore, { Autoplay, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { IWork } from '../interface/IWork';
 import WorkTarjet from './WorkTarjet';
 
-SwiperCore.use([Autoplay])
+SwiperCore.use([Autoplay, Navigation])
 
 interface Props {
 	works: IWork[]
@@ -35,18 +35,20 @@ const WorkSwiper: React.FC<Props> = ({ works }) => {
 
 	return (
 		<div ref={divSwiper} className='relative md:max-w-xs md:mx-auto'>
-			<Swiper autoplay spaceBetween={50} onInit={(thisSwiper) => { setSwiper(thisSwiper) }}>
+			<Swiper navigation autoplay spaceBetween={50} onInit={(thisSwiper) => { setSwiper(thisSwiper) }}>
 				{works.map((work) => {
 					return (
 						<SwiperSlide key={`slide-works-${work.title}`}>
-							<div className='md:w-full md:max-w-xs'>
+							<div className='px-16 md:w-full md:max-w-xs'>
 								<WorkTarjet {...work} />
 							</div>
 						</SwiperSlide>
 					)
 				})}
 			</Swiper>
-			<div className='absolute z-0 w-full h-full border rounded right-4 top-4 border-lightBlue-500' />
+			<div className='absolute z-0 w-full h-full px-16 right-2 top-2'>
+				<div className="w-full h-full border rounded border-lightBlue-500" />
+			</div>
 		</div>
 	)
 }
