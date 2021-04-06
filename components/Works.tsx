@@ -67,9 +67,19 @@ const Works = () => {
 						opacity: 100%;
 					}
 				}
-				@media (min-width: 768px) and (max-height: 800px) {
+				@media (min-width: 768px) and (max-height: 600px) {
 					.workTarjets {
 						column-gap: 14rem;
+					}
+				}
+				@media (min-width: 768px) and (min-height: 601px) and (max-height: 700px) {
+					.workTarjets {
+						column-gap: 10rem;
+					}
+				}
+				@media (min-width: 768px) and (min-height: 701px) and (max-height: 800px) {
+					.workTarjets {
+						column-gap: 6rem;
 					}
 				}
 			`}</style>
