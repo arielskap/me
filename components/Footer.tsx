@@ -20,6 +20,14 @@ const Footer: React.FunctionComponent = () => {
 					<SvgGithub className='object-contain h-16 p-1 text-white border border-transparent rounded fill-current hover:border-lightBlue-500 hover:bg-black hover:bg-opacity-90' />
 				</a>
 			</div>
+			<style jsx>{`
+				@media (min-width: 768px) and (max-height: 800px) {
+					footer {
+						padding-top: 0.5rem;
+						padding-bottom: 0.5rem;
+					}
+				}
+			`}</style>
 		</footer>
 	)
 }

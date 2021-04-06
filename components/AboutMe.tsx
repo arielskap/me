@@ -31,7 +31,7 @@ const AboutMe: React.FC<Props> = ({birthday}) => {
 		}
 	}, [isDesktop])
 	return (
-		<section className="md:pt-16 md:h-screen md:flex md:items-center md:justify-center md:px-16" id="aboutMe">
+		<section className="md:py-16 md:h-screen md:flex md:items-center md:justify-center md:px-16" id="aboutMe">
 			<div className='h-screen md:h-auto md:p-4 md:border md:border-lightBlue-500 md:shadow-2xl md:bg-primary md:bg-opacity-90 md:rounded-md'>
 				<h2 className='pt-16 pb-4 text-4xl text-center md:hidden'>Sobre Mí</h2>
 				<div className='md:grid md:grid-cols-4'>
@@ -44,7 +44,7 @@ const AboutMe: React.FC<Props> = ({birthday}) => {
 								<div ref={divSvgShootingStars} className='absolute z-10 hidden w-24 h-24 rounded-tl-full rounded-br-full'>
 									<SvgShootingStars/>
 								</div>
-								<div ref={divSvgGalaxy} className='w-full md:w-56 md:mx-auto animate-rotate'>
+								<div ref={divSvgGalaxy} className='w-full div-svg-galaxy md:w-56 md:mx-auto animate-rotate'>
 									<SvgGalaxy />
 								</div>
 							</div>
@@ -53,6 +53,13 @@ const AboutMe: React.FC<Props> = ({birthday}) => {
 					</div>
 				</div>
 			</div>
+			<style jsx>{`
+				@media (min-width: 768px) and (max-height: 800px) {
+					.div-svg-galaxy {
+						width: 10rem;
+					}
+				}
+			`}</style>
 		</section>
 	)
 }

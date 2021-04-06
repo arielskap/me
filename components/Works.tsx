@@ -30,10 +30,10 @@ const Works = () => {
 	}, [isDesktop])
 
 	return (
-		<section id="works" className="pt-16 md:pt-0 md:h-screen md:flex md:items-center md:justify-center md:px-16">
+		<section id="works" className="pt-16 md:py-16 md:h-screen md:flex md:items-center md:justify-center md:px-16">
 			<div className='flex flex-col md:p-4'>
 				<h2 className='pb-4 text-4xl text-center md:hidden'>Trabajos</h2>
-				<div ref={divWorksBody} className='flex-grow md:px-12 md:grid md:grid-cols-3 md:gap-x-12'>
+				<div ref={divWorksBody} className='flex-grow workTarjets md:px-12 md:grid md:grid-cols-3 md:gap-x-12'>
 					{isDesktop ?
 						dataWorks.map((work) => {
 							return (
@@ -65,6 +65,11 @@ const Works = () => {
 					100% {
 						transform: translateY(0rem);
 						opacity: 100%;
+					}
+				}
+				@media (min-width: 768px) and (max-height: 800px) {
+					.workTarjets {
+						column-gap: 14rem;
 					}
 				}
 			`}</style>
