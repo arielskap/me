@@ -25,11 +25,11 @@ const Index: React.FC<Props> = ({ birthday }) => {
 
 	useEffect(() => {
 		if (swiper && isDesktop === false) {
-			let flag = true;
 			swiper.on("slideChange", (swiperLocal) => {
-				if (flag) {
+				if (swiperLocal.activeIndex === 0) {
+					buttonArrowBottom.current?.classList.add("buttonArrowBottomAnimation")
+				} else {
 					buttonArrowBottom.current?.classList.remove("buttonArrowBottomAnimation")
-					flag = false;
 				}
 				if (swiperLocal.isEnd) {
 					buttonArrowBottom.current?.classList.add("opacity-0")
