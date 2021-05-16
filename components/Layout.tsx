@@ -25,8 +25,8 @@ const Layout: React.FunctionComponent<Props> = ({ children, title }) => {
 			<NextSeo
 				title={title}
 				description='Ariel Santiago Villarreal Gutierrez | Full-Stack Developer | React NextJS NodeJS Express MongoDB MySQL'
-				// canonical="https://www.arielvillarreal.com/"
-				canonical="https://arielvillarreal.vercel.app/"
+				canonical="https://www.arielvillarreal.mx/"
+				// canonical="https://arielvillarreal.vercel.app/"
 			/>
 			<Header/>
 			{isDesktop && (

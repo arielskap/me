@@ -1,10 +1,10 @@
-import { useContext, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import SwiperCore, { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react'
 import Layout from "../components/Layout"
 import Home from "../components/Home"
 import Works from '../components/Works'
-import { Context } from '../SliderContext'
+import { useSwiper } from '../SliderContext'
 import AboutMe from '../components/AboutMe'
 import Contact from '../components/Contact'
 import { GetStaticProps } from 'next'
@@ -20,21 +20,24 @@ SwiperCore.use([Navigation]);
 
 const Index: React.FC<Props> = ({ birthday }) => {
 	const buttonArrowBottom = useRef<HTMLButtonElement>(null)
-	let { swiper, setSwiper } = useContext(Context)
+	let { swiper, setSwiper } = useSwiper()
 	const [isDesktop] = useIsDesktop()
 
 	useEffect(() => {
 		if (swiper && isDesktop === false) {
 			swiper.on("slideChange", (swiperLocal) => {
-				if (swiperLocal.activeIndex === 0) {
-					buttonArrowBottom.current?.classList.add("buttonArrowBottomAnimation")
-				} else {
-					buttonArrowBottom.current?.classList.remove("buttonArrowBottomAnimation")
-				}
-				if (swiperLocal.isEnd) {
-					buttonArrowBottom.current?.classList.add("opacity-0")
-				} else if(buttonArrowBottom.current?.classList.contains("opacity-0")) {
-					buttonArrowBottom.current?.classList.remove("opacity-0")
+				const buttonArrow = buttonArrowBottom.current;
+				if(buttonArrow){
+					if (swiperLocal.activeIndex === 0) {
+						buttonArrow.classList.add("buttonArrowBottomAnimation")
+					} else {
+						buttonArrow.classList.remove("buttonArrowBottomAnimation")
+					}
+					if (swiperLocal.isEnd) {
+						buttonArrow.classList.add("opacity-0")
+					} else if(buttonArrow.classList.contains("opacity-0")) {
+						buttonArrow.classList.remove("opacity-0")
+					}
 				}
 			})
 		}
@@ -42,7 +45,7 @@ const Index: React.FC<Props> = ({ birthday }) => {
 
 	return (
 		<Layout title='Home'>
-			<div className='container relative px-2 mx-auto text-white'>
+			<section className='container relative px-2 mx-auto text-white'>
 				<Swiper
 					navigation
 					spaceBetween={isDesktop ? 30 : isDesktop === false ? 0 : undefined}
@@ -67,7 +70,7 @@ const Index: React.FC<Props> = ({ birthday }) => {
 						<SvgArrowBottom style={{strokeWidth: 8}} className="object-contain w-10 stroke-current" />
 					</button>
 				</div>
-			</div>
+			</section>
 			<style jsx>{`
 				.buttonArrowBottomAnimation {
 					animation: translateY 1.5s linear infinite;

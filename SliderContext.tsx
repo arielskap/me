@@ -1,25 +1,25 @@
-import { createContext, useState } from "react"
+import { createContext, useState, useContext } from "react"
 import { Swiper } from "swiper"
-import { ContextType } from "./type"
 
-export const Context = createContext<Partial<ContextType>>({})
+const SwiperContext = createContext<{ swiper: Swiper | null, setSwiper: React.Dispatch<React.SetStateAction<Swiper | null>> } | undefined>(undefined)
 
-export const Provider: React.FC = ( { children } ) => {
+const SwiperProvider: React.FC = ({children}) => {
 	const [swiper, setSwiper] = useState<null | Swiper>(null)
+	const value = { swiper, setSwiper }
 
-	const value = {
-		swiper,
-		setSwiper
-	}
-
-	return (
-		<Context.Provider value={value}>
-			{children}
-		</Context.Provider>
-	)
+	return <SwiperContext.Provider value={value}>{children}</SwiperContext.Provider>
 }
 
-export default {
-	Provider,
-	Consumer: Context.Consumer
+const useSwiper = () => {
+	const context = useContext(SwiperContext)
+	if (context === undefined) {
+		throw new Error('useSwiper must be used within a SwiperProvider')
+	}
+
+	return context
+}
+
+export {
+	SwiperProvider,
+	useSwiper
 }

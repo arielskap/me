@@ -1,13 +1,13 @@
-import { useContext, useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import Image from 'next/image'
 import colors from 'tailwindcss/colors'
 import { EMenu } from "../enums/EMenu";
-import { Context } from "../SliderContext"
+import { useSwiper } from "../SliderContext"
 
 let flag = false;
 
 const Header: React.FunctionComponent = () => {
-	const { swiper } = useContext(Context)
+	const { swiper } = useSwiper()
 	const [menuOpen, setMenuOpen] = useState<boolean>(false)
 	const navBgMenu = useRef<HTMLElement>(null)
 	const pIconMenu = useRef<HTMLParagraphElement>(null)
@@ -86,7 +86,7 @@ const Header: React.FunctionComponent = () => {
 					{Array.from( { length: ( Object.keys(EMenu).length  / 2 ) } ).map((_ , i) => {
 						return (
 							<li key={`button-menu-${i}`}>
-								<button type='button' onClick={() => handleChangePage(i)}>{EMenu[i]}</button>
+								<button className="hover:underline" type='button' onClick={() => handleChangePage(i)}>{EMenu[i]}</button>
 							</li>
 						)
 					})}
