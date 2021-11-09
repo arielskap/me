@@ -1,3 +1,4 @@
-export default {
-	titleTemplate: `%s 🤖 Ariel Santiago Villarreal Gutierrez`,
+const nextSeo = {
+  titleTemplate: '%s 🤖 Ariel Santiago Villarreal Gutierrez'
 }
+export default nextSeo
