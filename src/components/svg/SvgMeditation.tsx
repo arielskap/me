@@ -12,21 +12,19 @@ const SvgMeditation = (props: React.SVGProps<SVGSVGElement>) => {
         })
       })
     }
-    window.onload = () => {
-      let flag = true
-      document.querySelector('body')?.addEventListener('touchmove', () => {
-        if (flag) {
-          removeEventAndAnimate()
-          flag = false
-        }
-      }, { once: true })
-      setTimeout(() => {
-        if (flag) {
-          removeEventAndAnimate()
-          flag = false
-        }
-      }, 3000)
-    }
+    let flag = true
+    document.querySelector('body')?.addEventListener('touchmove', () => {
+      if (flag) {
+        removeEventAndAnimate()
+        flag = false
+      }
+    }, { once: true })
+    setTimeout(() => {
+      if (flag) {
+        removeEventAndAnimate()
+        flag = false
+      }
+    }, 1500)
   }, [])
 
   return (
