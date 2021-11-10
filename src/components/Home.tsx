@@ -2,7 +2,7 @@ import SvgMeditation from './svg/SvgMeditation'
 
 const Home = () => {
   return (
-    <section className='pt-16 md:py-16 md:h-screen md:flex md:items-center md:justify-center md:px-16'>
+    <section className='h-screen pt-16 md:py-16 md:flex md:items-center md:justify-center md:px-16'>
       <div className='flex flex-col p-4 md:border md:border-sky-500 md:shadow-2xl md:bg-primary md:bg-opacity-90 md:grid md:grid-cols-3 md:space-x-4 md:rounded-md'>
         <div className='md:flex md:flex-col md:justify-center md:col-span-2'>
           <p className='text-blue-300'>¡Hola, Mundo! Mi nombre es</p>

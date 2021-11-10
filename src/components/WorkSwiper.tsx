@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
-import SwiperCore, { Autoplay, Navigation } from 'swiper'
+import SwiperType, { Autoplay, Navigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { IWork } from '../interface/IWork'
 import WorkTarjet from './WorkTarjet'
@@ -7,15 +7,13 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/autoplay'
 
-SwiperCore.use([Autoplay, Navigation])
-
 interface Props {
   works: IWork[]
 }
 
 const WorkSwiper = ({ works }: Props) => {
   const divSwiper = useRef<HTMLDivElement>(null)
-  const [swiper, setSwiper] = useState<SwiperCore>()
+  const [swiper, setSwiper] = useState<SwiperType>()
 
   useEffect(() => {
     if (divSwiper.current && swiper) {
@@ -38,7 +36,13 @@ const WorkSwiper = ({ works }: Props) => {
 
   return (
     <div ref={divSwiper} className='relative md:max-w-xs md:mx-auto'>
-      <Swiper navigation autoplay spaceBetween={50} onInit={(thisSwiper) => { setSwiper(thisSwiper) }}>
+      <Swiper
+        modules={[Autoplay, Navigation]}
+        navigation
+        autoplay
+        spaceBetween={50}
+        onInit={(thisSwiper) => { setSwiper(thisSwiper) }}
+      >
         {works.map((work) => {
           return (
             <SwiperSlide key={`slide-works-${work.title}`}>

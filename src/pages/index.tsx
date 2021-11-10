@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import SwiperCore, { Navigation } from 'swiper'
+import { Navigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import Layout from '../components/Layout'
 import Home from '../components/Home'
@@ -19,9 +19,7 @@ interface Props {
   birthday: number
 }
 
-SwiperCore.use([Navigation])
-
-const Index: React.FC<Props> = ({ birthday }) => {
+const Index = ({ birthday }: Props) => {
   const buttonArrowBottom = useRef<HTMLButtonElement>(null)
   const { state, dispatch } = useSlider()
   const [isDesktop] = useIsDesktop()
@@ -48,9 +46,10 @@ const Index: React.FC<Props> = ({ birthday }) => {
 
   return (
     <Layout title='Home'>
-      <section className='container relative px-2 mx-auto text-white'>
+      <section className='container relative h-screen px-2 mx-auto text-white'>
         <Swiper
-          navigation
+          modules={[Navigation]}
+          navigation={!!isDesktop}
           spaceBetween={isDesktop ? 30 : isDesktop === false ? 0 : undefined}
           direction={isDesktop ? 'horizontal' : isDesktop === false ? 'vertical' : undefined}
           onInit={(thisSwiper) => { dispatch({ type: SliderActionKind.SET_SWIPER, payload: { swiper: thisSwiper } }) }}
