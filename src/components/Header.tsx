@@ -102,7 +102,7 @@ const Header = () => {
               objectFit="cover"
               objectPosition="center"
               placeholder="blur"
-              priority={true}
+              priority
             />
           </div>
         </div>

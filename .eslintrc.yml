@@ -18,6 +18,7 @@ globals:
   React: true
   JSX: true
   IntersectionObserverInit: true
+  StaticImageData: true
 settings:
   react:
     version: detect

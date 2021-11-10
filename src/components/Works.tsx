@@ -1,7 +1,7 @@
 import { useIsDesktop } from '../hooks/useIsDesktop'
 import SvgGithub from './svg/SvgGithub'
 import WorkSwiper from './WorkSwiper'
-import dataWorks from '../json/works.json'
+import dataWorks from '../json/works'
 import WorkTarjet from './WorkTarjet'
 import { useEffect, useRef } from 'react'
 import { generateObserver } from '../lib/functions'
@@ -15,13 +15,12 @@ const Works = () => {
       generateObserver((e) => {
         const firstChild: HTMLDivElement = e.firstChild as HTMLDivElement
 
-        firstChild.classList.add('translateY')
+        firstChild.classList.replace('-translate-y-32', 'translate-y-0')
         firstChild.classList.replace('opacity-0', 'opacity-100')
         e.childNodes.forEach((child, i) => {
           if (i !== 0) {
-            ;
-            e.childNodes[i - 1].addEventListener('animationend', () => {
-              (child as HTMLDivElement).classList.add('translateY');
+            e.childNodes[i - 1].addEventListener('transitionend', () => {
+              (child as HTMLDivElement).classList.replace('-translate-y-32', 'translate-y-0');
               (child as HTMLDivElement).classList.replace('opacity-0', 'opacity-100')
             }, { once: true })
           }
@@ -38,7 +37,7 @@ const Works = () => {
           {isDesktop
             ? dataWorks.map((work) => {
               return (
-                <div className='relative opacity-0' key={`swiper-desktop-work-${work.title}`}>
+                <div className='relative transition duration-1000 ease-out transform -translate-y-32 opacity-0' key={`swiper-desktop-work-${work.title}`}>
                   <WorkTarjet {...work} />
                 </div>
               )
@@ -55,19 +54,6 @@ const Works = () => {
         </div>
       </div>
       <style jsx>{`
-        .translateY {
-          animation: translateY 0.5s ease-out;
-        }
-        @keyframes translateY {
-          0% {
-            transform: translateY(-8rem);
-            opacity: 0%;
-          }
-          100% {
-            transform: translateY(0rem);
-            opacity: 100%;
-          }
-        }
         @media (min-width: 768px) and (max-height: 600px) {
           .workTarjets {
             column-gap: 14rem;

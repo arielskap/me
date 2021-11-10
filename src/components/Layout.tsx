@@ -38,7 +38,7 @@ const Layout = ({ children, title }: Props) => {
               layout="fill"
               objectFit="cover"
               objectPosition="center"
-              priority={true}
+              priority
               placeholder="blur"
             />
           </div>

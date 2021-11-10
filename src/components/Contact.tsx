@@ -21,7 +21,7 @@ const Contact = () => {
                 objectPosition="right"
                 className='md:rounded-md'
                 placeholder="blur"
-                priority={true}
+                priority
               />
               <div id='img-border' className='absolute top-0 left-0 w-full h-full rounded' />
             </div>
