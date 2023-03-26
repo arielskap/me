@@ -1,14 +1,14 @@
-import Swiper from 'swiper'
+import Swiper from "swiper";
 
 export enum SliderActionKind {
-  SET_SWIPER
+  SET_SWIPER,
 }
 
 export interface Init {
-  type: SliderActionKind.SET_SWIPER
+  type: SliderActionKind.SET_SWIPER;
   payload: {
-    swiper: Swiper
-  }
+    swiper: Swiper;
+  };
 }
 
 export type SliderAction = Init;

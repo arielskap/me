@@ -1,9 +1,9 @@
-import Swiper from 'swiper'
+import Swiper from "swiper";
 
 export interface SliderState {
-  swiper: Swiper | null
+  swiper: Swiper | null;
 }
 
 export const initialSliderState: SliderState = {
-  swiper: null
-}
+  swiper: null,
+};

@@ -1,13 +1,25 @@
-import type { AppProps } from 'next/app'
-import { SliderProvider } from '../context/slider/Context'
-import '../styles/globals.css'
+import type { AppProps } from "next/app";
+import { SliderProvider } from "../context/slider/Context";
+import localFont from "next/font/local";
+import nextSeo from "../../next-seo-config";
+import { appWithTranslation } from "next-i18next";
+import { DefaultSeo } from "next-seo";
 
-function MyApp ({ Component, pageProps }: AppProps) {
+import "../styles/globals.css";
+
+const inconsolata = localFont({
+  src: "../../public/fonts/inconsolata/Inconsolata-VariableFont.ttf",
+});
+
+function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <SliderProvider>
-      <Component {...pageProps} />
-    </SliderProvider>
-  )
+    <div className={inconsolata.className}>
+      <DefaultSeo {...nextSeo} />
+      <SliderProvider>
+        <Component {...pageProps} />
+      </SliderProvider>
+    </div>
+  );
 }
 
-export default MyApp
+export default appWithTranslation(MyApp);

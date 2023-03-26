@@ -1,0 +1,57 @@
+{
+  "home": {
+    "init": "Hello, World! My name is",
+    "subTitle": "And I specialize in web development.",
+    "description": "I have over 5 years of experience in software development. I'm always building the future, learning from the people around me, and innovating along the way."
+  },
+  "projects": {
+    "title": "Projects",
+    "apps": [
+      {
+        "title": "UTOPICX",
+        "href": "https://utopicx.com",
+        "alt": "Utopicx",
+        "description": "A project dedicated to creating applications for entertainment and fostering community inclusion."
+      },
+      {
+        "title": "ALTA PREVIA",
+        "href": "https://play.google.com/store/apps/details?id=com.marte.altaPrevia",
+        "alt": "Alta Previa",
+        "description": "An Android app for party games."
+      },
+      {
+        "title": "RATABBOY",
+        "href": "https://www.ratabboy.com.ar",
+        "alt": "https://www.ratabboy.com.ar",
+        "description": "A website for a streamer dedicated to the game \"Empires & Puzzles\"."
+      }
+    ]
+  },
+  "aboutMe": {
+    "title": "About Me",
+    "description": "I was born in Argentina and am currently living in Mexico City. I am {{birthday}} years old. My favorite activities are hanging out with friends, reading, and programming. My goal is to explore beyond what any human has ever reached.",
+    "quote": "We must make the impossible possible"
+  },
+  "contact": {
+    "title": "Contact Me"
+  },
+  "header": {
+    "menu": [
+      {
+        "title": "Home",
+        "href": "#home"
+      },
+      {
+        "title": "Projects",
+        "href": "#projects"
+      },
+      {
+        "title": "About Me",
+        "href": "#aboutMe"
+      }, {
+        "title": "Contact Me",
+        "href": "#contact"
+      }
+    ]
+  }
+}
