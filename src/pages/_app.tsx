@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import nextSeo from "../../next-seo-config";
 import { appWithTranslation } from "next-i18next";
 import { DefaultSeo } from "next-seo";
+import { Analytics } from "@vercel/analytics/react";
 
 import "../styles/globals.css";
 
@@ -13,12 +14,15 @@ const inconsolata = localFont({
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div className={inconsolata.className}>
+    <>
       <DefaultSeo {...nextSeo} />
       <SliderProvider>
-        <Component {...pageProps} />
+        <div className={inconsolata.className}>
+          <Component {...pageProps} />
+        </div>
       </SliderProvider>
-    </div>
+      <Analytics />
+    </>
   );
 }
 
