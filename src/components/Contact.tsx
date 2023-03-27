@@ -13,9 +13,9 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="pt-16 md:flex md:h-screen md:items-center md:justify-center md:py-16 md:px-16"
+      className="flex h-screen items-center md:justify-center md:py-16 md:px-16"
     >
-      <div className="contact-body md:w-full md:max-w-xs md:rounded-md md:border md:border-sky-500 md:bg-primary md:bg-opacity-90 md:p-4 md:shadow-2xl">
+      <div className="contact-body mx-auto md:w-full md:max-w-xs md:rounded-md md:border md:border-sky-500 md:bg-primary md:bg-opacity-90 md:p-4 md:shadow-2xl">
         <h2 className="pb-4 text-center text-4xl md:hidden">
           {t("contact.title")}
         </h2>

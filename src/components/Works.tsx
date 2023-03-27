@@ -62,9 +62,9 @@ const Works = () => {
   return (
     <section
       id="works"
-      className="pt-16 md:flex md:h-screen md:items-center md:justify-center md:py-16 md:px-16"
+      className="flex h-screen items-center md:justify-center md:py-16 md:px-16"
     >
-      <div className="flex flex-col md:p-4">
+      <div className="flex w-full flex-col md:w-auto md:p-4">
         <h2 className="pb-4 text-center text-4xl md:hidden">
           {t("projects.title")}
         </h2>
@@ -88,7 +88,7 @@ const Works = () => {
               );
             })}
           </Transition>
-          <div className="block md:hidden">
+          <div className="no-hidden-swiper-button block md:hidden">
             <WorkSwiper works={apps} />
           </div>
         </div>

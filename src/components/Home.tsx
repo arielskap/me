@@ -5,7 +5,7 @@ const Home = () => {
   const { t } = useTranslation("common");
 
   return (
-    <section className="h-screen pt-16 md:flex md:items-center md:justify-center md:py-16 md:px-16">
+    <section className="flex h-screen items-center md:justify-center md:py-16 md:px-16">
       <div className="flex flex-col p-4 md:grid md:grid-cols-3 md:space-x-4 md:rounded-md md:border md:border-sky-500 md:bg-primary md:bg-opacity-90 md:shadow-2xl">
         <div className="md:col-span-3 md:flex md:flex-col md:justify-center lg:col-span-2">
           <p className="text-blue-300">{t("home.init")}</p>

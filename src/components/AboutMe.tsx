@@ -11,11 +11,11 @@ const AboutMe = ({ birthday }: Props) => {
 
   return (
     <section
-      className="md:flex md:h-screen md:items-center md:justify-center md:py-16 md:px-16"
+      className="flex h-screen items-center md:justify-center md:py-16 md:px-16"
       id="aboutMe"
     >
-      <div className="relative z-10 h-screen md:h-auto md:rounded-md md:border md:border-sky-500 md:bg-primary md:bg-opacity-90 md:p-4 md:shadow-2xl">
-        <h2 className="pt-16 pb-4 text-center text-4xl md:hidden">
+      <div className="md:rounded-md md:border md:border-sky-500 md:bg-primary md:bg-opacity-90 md:p-4 md:shadow-2xl">
+        <h2 className="pb-4 text-center text-4xl md:hidden">
           {t("aboutMe.title")}
         </h2>
         <div className="lg:grid lg:grid-cols-4">

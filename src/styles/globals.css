@@ -19,6 +19,10 @@ body {
 	display: none !important;
 }
 
+.no-hidden-swiper-button .swiper-button-prev, .no-hidden-swiper-button .swiper-button-next {
+	display: flex !important;
+}
+
 @media (min-width: 768px) {
 	.swiper-button-prev {
 		display: flex !important;
