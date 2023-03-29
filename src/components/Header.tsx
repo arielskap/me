@@ -117,6 +117,15 @@ const Header = () => {
             </p>
           </button>
         </div>
+        <Link
+          href="/"
+          locale={locale === "es" ? "en" : "es"}
+          className="flex items-center rounded-lg border border-pink-500 py-1 px-2 text-white md:hidden"
+        >
+          <LanguageIcon className="mr-2 h-5 w-5" />
+          <span className="sr-only">Change to</span>{" "}
+          {locale === "es" ? "ES" : "EN"}
+        </Link>
         <div className="hidden md:block">
           <h2 className="text-center text-4xl text-white">{title}</h2>
         </div>
@@ -131,34 +140,10 @@ const Header = () => {
           />
         </div>
       </div>
-      <nav
+      <section
+        className="close-menu absolute top-0 left-0 z-10 hidden h-screen  w-screen transform-gpu animate-slideOutUp bg-secondary"
         ref={navBgMenu}
-        className="close-menu absolute top-0 left-0 z-10 hidden h-screen w-screen transform-gpu animate-slideOutUp bg-secondary text-white"
       >
-        <ul className="flex h-full flex-col items-center justify-center space-y-6 bg-black bg-opacity-40 text-5xl md:pb-24">
-          {menu.map((option, i) => {
-            return (
-              <li key={`button-menu-${i}`}>
-                <button
-                  className="hover:underline"
-                  type="button"
-                  onClick={() => handleChangePage(i)}
-                >
-                  {option.title}
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-        <Link
-          href="/"
-          locale={locale === "es" ? "en" : "es"}
-          className="absolute right-4 bottom-4 flex items-center rounded-lg border border-pink-500 py-1 px-2 md:hidden"
-        >
-          <LanguageIcon className="mr-2 h-5 w-5" />
-          <span className="sr-only">Change to</span>{" "}
-          {locale === "es" ? "ES" : "EN"}
-        </Link>
         <div className="absolute top-0 left-0 -z-10 h-full w-full">
           <div className="relative h-full w-full">
             <Image
@@ -169,7 +154,24 @@ const Header = () => {
             />
           </div>
         </div>
-      </nav>
+        <nav className="h-full w-full text-white">
+          <ul className="flex h-full flex-col items-center justify-center space-y-6 bg-black bg-opacity-40 text-5xl md:pb-24">
+            {menu.map((option, i) => {
+              return (
+                <li key={`button-menu-${i}`}>
+                  <button
+                    className="hover:underline"
+                    type="button"
+                    onClick={() => handleChangePage(i)}
+                  >
+                    {option.title}
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </section>
       <style jsx>{`
         .menuIcon:before {
           content: "";

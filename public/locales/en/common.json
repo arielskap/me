@@ -33,7 +33,9 @@
     "quote": "We must make the impossible possible"
   },
   "contact": {
-    "title": "Contact Me"
+    "title": "Contact Me",
+    "cv": "Get CV",
+    "fileName": "Ariel Villarreal Curriculum.pdf"
   },
   "header": {
     "menu": [

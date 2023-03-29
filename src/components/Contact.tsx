@@ -90,11 +90,11 @@ const Contact = () => {
             <a
               rel="noopener"
               className="z-10 h-full w-full"
-              href="/Ariel Villarreal Curriculum.pdf"
+              href={`/${t("contact.fileName")}`}
               target="blank"
             >
               <div className="rounded border border-sky-500 px-4 py-2 hover:border-sky-500 hover:bg-black hover:bg-opacity-90 md:border-sky-800">
-                <span>Obtener CV</span>
+                <span>{t("contact.cv")}</span>
               </div>
             </a>
             <div className="absolute right-1 top-1 h-full w-full rounded border-b border-l border-sky-500 md:border-sky-800" />
