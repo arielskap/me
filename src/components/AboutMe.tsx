@@ -1,26 +1,36 @@
 import SvgGalaxy from "./svg/SvgGalaxy";
-import { useTranslation } from "next-i18next";
+import useTranslatedMarkdown from "../hooks/useTranslatedMarkdown";
 
 interface Props {
   birthday: number;
 }
 
 const AboutMe = ({ birthday }: Props) => {
-  const { t } = useTranslation("common");
-  const description = t("aboutMe.description", { birthday });
+  const { getTMarkdown } = useTranslatedMarkdown({
+    nameSpace: "common",
+  });
+  const description = getTMarkdown("aboutMe.description", { birthday });
 
   return (
     <section
-      className="flex h-screen items-center md:justify-center md:py-16 md:px-16"
+      className="flex h-screen items-center md:justify-center md:px-16 md:py-16"
       id="aboutMe"
     >
       <div className="md:rounded-md md:border md:border-sky-500 md:bg-primary md:bg-opacity-90 md:p-4 md:shadow-2xl">
-        <h2 className="pb-4 text-center text-4xl md:hidden">
-          {t("aboutMe.title")}
-        </h2>
+        <div
+          className="pb-4 text-center text-4xl md:hidden"
+          dangerouslySetInnerHTML={{
+            __html: getTMarkdown("aboutMe.title"),
+          }}
+        />
         <div className="lg:grid lg:grid-cols-4">
           <div className="md:col-span-3 md:flex md:items-center md:justify-center">
-            <p className="md:text-2xl">{description}</p>
+            <div
+              className="md:text-2xl"
+              dangerouslySetInnerHTML={{
+                __html: description,
+              }}
+            />
           </div>
           <div>
             <div className="flex items-center py-8 md:justify-center">
@@ -30,7 +40,12 @@ const AboutMe = ({ birthday }: Props) => {
                 </div>
               </div>
             </div>
-            <p className="text-center italic">- {t("aboutMe.quote")}</p>
+            <div
+              className="text-center italic"
+              dangerouslySetInnerHTML={{
+                __html: getTMarkdown("aboutMe.quote"),
+              }}
+            />
           </div>
         </div>
       </div>

@@ -8,6 +8,7 @@ import { useTranslation } from "next-i18next";
 import altaPreviaIMG from "../../public/altaPrevia.jpeg";
 import utopicxIMG from "../../public/utopicx.png";
 import ratabboyIMG from "../../public/ratabboy.png";
+import useTranslatedMarkdown from "../hooks/useTranslatedMarkdown";
 
 const getImage = (title: string) => {
   switch (title) {
@@ -37,21 +38,25 @@ const Works = () => {
   const divWorksBody = useRef<HTMLDivElement>(null);
   const swiperSlide = useSwiperSlide();
   const [isView, setIsView] = useState(swiperSlide.isActive);
-  const { t, i18n } = useTranslation("common");
-  const initApps = t("projects.apps", { returnObjects: true }).map((app) => ({
-    ...app,
-    img: getImage(app.title),
-  }));
+  const { getT, getTMarkdown, i18n } = useTranslatedMarkdown({
+    nameSpace: "common",
+  });
+  const initApps = getT("projects.apps", { returnObjects: true }).map(
+    (app) => ({
+      ...app,
+      img: getImage(app.title),
+    })
+  );
   const [apps, setApps] = useState(initApps);
 
   useEffect(() => {
     setApps(
-      t("projects.apps", { returnObjects: true }).map((app) => ({
+      getT("projects.apps", { returnObjects: true }).map((app) => ({
         ...app,
         img: getImage(app.title),
       }))
     );
-  }, [t, i18n.language]);
+  }, [getT, i18n.language]);
 
   useEffect(() => {
     if (swiperSlide.isActive) {
@@ -62,12 +67,15 @@ const Works = () => {
   return (
     <section
       id="works"
-      className="flex h-screen items-center md:justify-center md:py-16 md:px-16"
+      className="flex h-screen items-center md:justify-center md:px-16 md:py-16"
     >
       <div className="flex w-full flex-col md:w-auto md:p-4">
-        <h2 className="pb-4 text-center text-4xl md:hidden">
-          {t("projects.title")}
-        </h2>
+        <div
+          className="pb-4 text-center text-4xl md:hidden"
+          dangerouslySetInnerHTML={{
+            __html: getTMarkdown("projects.title"),
+          }}
+        />
         <div ref={divWorksBody} className="workTargets flex-grow">
           <Transition
             className="hidden md:grid md:grid-cols-3 md:gap-x-1 md:px-12 lg:gap-x-12"

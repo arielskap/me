@@ -6,4 +6,5 @@ export interface IWork {
   img: StaticImageData;
   alt: string;
   description: string;
+  tags: Array<string>;
 }

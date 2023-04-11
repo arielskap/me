@@ -4,10 +4,10 @@ import colors from "tailwindcss/colors";
 import { useSlider } from "../context/slider/Context";
 import spacePinkIMG from "../../public/spacePink.jpg";
 import { NextSeo } from "next-seo";
-import { useTranslation } from "next-i18next";
 import { LanguageIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import useTranslatedMarkdown from "../hooks/useTranslatedMarkdown";
 
 let flag = false;
 
@@ -18,13 +18,17 @@ const Header = () => {
   const pIconMenu = useRef<HTMLParagraphElement>(null);
   const divContainerMenu = useRef<HTMLDivElement>(null);
   const [title, setTitle] = useState("");
-  const { t, i18n } = useTranslation("common");
-  const [menu, setMenu] = useState(t("header.menu", { returnObjects: true }));
+  const { getT, i18n } = useTranslatedMarkdown({
+    nameSpace: "common",
+  });
+  const [menu, setMenu] = useState(
+    getT("header.menu", { returnObjects: true })
+  );
   const { locale } = useRouter();
 
   useEffect(() => {
     const swiper = state.swiper;
-    const newMenu = t("header.menu", { returnObjects: true });
+    const newMenu = getT("header.menu", { returnObjects: true });
     if (swiper && typeof swiper.activeIndex === "number") {
       setTitle(newMenu[swiper.activeIndex].title);
       swiper.on("slideChange", (localSwiper) => {
@@ -32,7 +36,7 @@ const Header = () => {
       });
     }
     setMenu(newMenu);
-  }, [t, i18n.language, state.swiper]);
+  }, [getT, i18n.language, state.swiper]);
 
   const handleMenuState = (setMenuState: Dispatch<SetStateAction<boolean>>) => {
     setMenuState(!menuOpen);
@@ -91,14 +95,14 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 left-0 z-20 h-px w-full">
+    <header className="sticky left-0 top-0 z-20 h-px w-full">
       <NextSeo
         title={title || menu[0].title}
         description="Portfolio de Ariel Santiago Villarreal Gutierrez desarrollador web y movil"
       />
       <div
         ref={divContainerMenu}
-        className="container absolute top-0 left-0 right-0 z-20 mx-auto flex items-center justify-between border-b border-l border-r border-transparent bg-primary transition-colors duration-300 md:rounded-br-3xl md:rounded-bl-3xl md:border-sky-500"
+        className="container absolute left-0 right-0 top-0 z-20 mx-auto flex items-center justify-between border-b border-l border-r border-transparent bg-primary transition-colors duration-300 md:rounded-bl-3xl md:rounded-br-3xl md:border-sky-500"
       >
         <div className="p-4">
           <button
@@ -120,7 +124,7 @@ const Header = () => {
         <Link
           href="/"
           locale={locale === "es" ? "en" : "es"}
-          className="flex items-center rounded-lg border border-pink-500 py-1 px-2 text-white md:hidden"
+          className="flex items-center rounded-lg border border-pink-500 px-2 py-1 text-white md:hidden"
         >
           <LanguageIcon className="mr-2 h-5 w-5" />
           <span className="sr-only">Change to</span>{" "}
@@ -141,10 +145,10 @@ const Header = () => {
         </div>
       </div>
       <section
-        className="close-menu absolute top-0 left-0 z-10 hidden h-screen  w-screen transform-gpu animate-slideOutUp bg-secondary"
+        className="close-menu absolute left-0 top-0 z-10 hidden h-screen  w-screen transform-gpu animate-slideOutUp bg-secondary"
         ref={navBgMenu}
       >
-        <div className="absolute top-0 left-0 -z-10 h-full w-full">
+        <div className="absolute left-0 top-0 -z-10 h-full w-full">
           <div className="relative h-full w-full">
             <Image
               src={spacePinkIMG}

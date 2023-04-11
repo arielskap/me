@@ -1,42 +1,46 @@
 {
   "home": {
     "init": "¡Hola, Mundo! Mi nombre es",
-    "subTitle": "Y me especializo en el desarrollo web.",
+    "subTitle": "Y me especializo en el **desarrollo web/mobile**.",
     "description":
-      "Tengo experiencia hace más de 5 años en el desarrollo de software. Siempre estoy construyendo el futuro, aprendiendo de la gente que me rodea e innovando en el camino."
+      "Tengo experiencia hace más de **5 años** en el desarrollo de software con tecnologías como **JavaScript, TypeScript, React, React Native, SQL, NoSQL, Python**, entre otros."
   },
   "projects": {
-    "title": "Proyectos",
+    "title": "## Proyectos",
+    "technologies": "Tecnologías",
     "apps": [
       {
         "title": "UTOPICX",
         "href": "https://utopicx.com",
         "alt": "Utopicx",
-        "description": "Proyecto dedicado a crear aplicaciones para entretener y generar inclusión en la comunidad."
+        "description": "Proyecto dedicado a crear aplicaciones para entretener y generar inclusión en la comunidad.",
+        "tags": ["TypeScript", "NextJS", "TailwindCSS"]
       },
       {
         "title": "ALTA PREVIA",
         "href": "https://play.google.com/store/apps/details?id=com.marte.altaPrevia",
         "alt": "Alta Previa",
-        "description": "Aplicación para Android de juegos para fiestas."
+        "description": "Aplicación para Android de juegos para fiestas.",
+        "tags": ["TypeScript", "React Native", "NestJS"]
       },
       {
         "title": "RATABBOY",
         "href": "https://www.ratabboy.com.ar",
         "alt": "https://www.ratabboy.com.ar",
-        "description": "Pagina para un streamer dedicado a el juego \"Empires & Puzzles\"."
+        "description": "Pagina para un streamer dedicado a el juego \"Empires & Puzzles\".",
+        "tags": ["TypeScript", "NextJS", "MongoDB"]
       }
     ]
   },
   "aboutMe": {
-    "title": "Sobre mí",
+    "title": "## Sobre mí",
     "description": "Nací en Argentina y estoy viviendo actualmente en Ciudad de México. Tengo {{birthday}} Años. Mis actividades favoritas son salir con amigos, leer y programar. Mi objetivo es explorar más allá de lo que alguna vez algun humano haya llegado.",
     "quote": "Hay que hacer posible lo imposible"
   },
   "contact": {
-    "title": "Contactame",
+    "title": "## Contactame",
     "cv": "Obtener CV",
-    "fileName": "Ariel Villarreal Curriculum.pdf"
+    "fileName": "Ariel Villarreal Curriculum ES.pdf"
   },
   "header": {
     "menu": [

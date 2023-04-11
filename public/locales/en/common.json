@@ -1,41 +1,45 @@
 {
   "home": {
     "init": "Hello, World! My name is",
-    "subTitle": "And I specialize in web development.",
-    "description": "I have over 5 years of experience in software development. I'm always building the future, learning from the people around me, and innovating along the way."
+    "subTitle": "And I specialize in **web/mobile development**.",
+    "description": "I have over **5 years** of experience in software development using technologies such as **JavaScript, TypeScript, React, React Native, SQL, NoSQL, Python**, among others."
   },
   "projects": {
-    "title": "Projects",
+    "title": "## Projects",
+    "technologies": "#### Technologies",
     "apps": [
       {
         "title": "UTOPICX",
         "href": "https://utopicx.com",
         "alt": "Utopicx",
-        "description": "A project dedicated to creating applications for entertainment and fostering community inclusion."
+        "description": "A project dedicated to creating applications for entertainment and fostering community inclusion.",
+        "tags": ["TypeScript", "NextJS", "TailwindCSS"]
       },
       {
         "title": "ALTA PREVIA",
         "href": "https://play.google.com/store/apps/details?id=com.marte.altaPrevia",
         "alt": "Alta Previa",
-        "description": "An Android app for party games."
+        "description": "An Android app for party games.",
+        "tags": ["TypeScript", "React Native", "NestJS"]
       },
       {
         "title": "RATABBOY",
         "href": "https://www.ratabboy.com.ar",
         "alt": "https://www.ratabboy.com.ar",
-        "description": "A website for a streamer dedicated to the game \"Empires & Puzzles\"."
+        "description": "A website for a streamer dedicated to the game \"Empires & Puzzles\".",
+        "tags": ["TypeScript", "NextJS", "MongoDB"]
       }
     ]
   },
   "aboutMe": {
-    "title": "About Me",
+    "title": "## About Me",
     "description": "I was born in Argentina and am currently living in Mexico City. I am {{birthday}} years old. My favorite activities are hanging out with friends, reading, and programming. My goal is to explore beyond what any human has ever reached.",
     "quote": "We must make the impossible possible"
   },
   "contact": {
-    "title": "Contact Me",
+    "title": "## Contact Me",
     "cv": "Get CV",
-    "fileName": "Ariel Villarreal Curriculum.pdf"
+    "fileName": "Ariel Villarreal Curriculum EN.pdf"
   },
   "header": {
     "menu": [
