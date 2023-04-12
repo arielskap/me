@@ -6,3 +6,8 @@ export enum Tag {
   NESTJS = "NestJS",
   MONGODB = "MongoDB",
 }
+
+export enum Role {
+  Assistant = "assistant",
+  User = "user",
+}

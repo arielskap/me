@@ -47,9 +47,9 @@ const Footer = () => {
         </div>
         <div className="absolute inset-y-0 right-4 hidden items-center md:flex">
           <Link
-            href="/"
+            href="/old"
             locale={locale === "es" ? "en" : "es"}
-            className="flex items-center rounded-lg border border-pink-500 py-1 px-2 text-white"
+            className="flex items-center rounded-lg border border-pink-500 px-2 py-1 text-white"
           >
             <LanguageIcon className="mr-2 h-5 w-5" />
             <span className="sr-only">Change to</span>{" "}

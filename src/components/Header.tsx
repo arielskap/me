@@ -122,7 +122,7 @@ const Header = () => {
           </button>
         </div>
         <Link
-          href="/"
+          href="/old"
           locale={locale === "es" ? "en" : "es"}
           className="flex items-center rounded-lg border border-pink-500 px-2 py-1 text-white md:hidden"
         >
