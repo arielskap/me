@@ -39,6 +39,13 @@ const handler = async (
     const messages: Array<IMessage> = req.body.messages;
     const oldMessages = messages.slice(0, -1);
     const lastMessage = messages.pop() as IMessage;
+    const newMessages = [
+      ...oldMessages,
+      {
+        ...lastMessage,
+        content: `Reclutador: ${lastMessage.content}. Responde como Ariel Santiago Villarreal Gutierrez:`,
+      },
+    ];
     const clientIp =
       req.headers["x-forwarded-for"] || req.connection.remoteAddress;
     const result = await openai.createChatCompletion({
@@ -48,21 +55,11 @@ const handler = async (
           role: "system",
           content: presetSystemMessage,
         },
-        ...oldMessages,
-        {
-          ...lastMessage,
-          content: `Reclutador: ${lastMessage.content}. Responde como Ariel Santiago Villarreal Gutierrez:`,
-        },
+        ...newMessages,
       ],
     });
     await Message.create({
-      data: [
-        ...messages,
-        {
-          role: "assistant",
-          content: result.data.choices[0].message?.content,
-        },
-      ],
+      data: newMessages,
       ip: clientIp,
     });
     return res.status(200).json({
