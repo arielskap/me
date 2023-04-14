@@ -19,3 +19,9 @@ interface ResponseData {
   success: boolean;
   message: string | undefined;
 }
+
+declare global {
+  interface Window {
+    webkitSpeechRecognition: typeof SpeechRecognition;
+  }
+}
