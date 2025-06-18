@@ -18,11 +18,7 @@ const useTranslatedMarkdown = ({ nameSpace }: Props) => {
     return parseMarked(tMarkdown);
   };
 
-  return {
-    getTMarkdown,
-    getT: t,
-    i18n,
-  };
+  return { getTMarkdown, getT: t, i18n };
 };
 
 export default useTranslatedMarkdown;
