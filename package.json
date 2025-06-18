@@ -15,9 +15,9 @@
   "dependencies": {
     "@headlessui/react": "^2.2.4",
     "@heroicons/react": "^2.2.0",
-    "@react-three/drei": "^9.122.0",
-    "@react-three/fiber": "^8.18.0",
-    "@types/three": "^0.158.3",
+    "@react-three/drei": "^9.99.0",
+    "@react-three/fiber": "^8.15.0",
+    "@types/three": "^0.161.2",
     "@vercel/analytics": "^1.5.0",
     "i18next": "^23.16.8",
     "isomorphic-dompurify": "^1.13.0",
@@ -33,7 +33,7 @@
     "react-i18next": "^13.5.0",
     "sharp": "^0.32.6",
     "swiper": "11.2.8",
-    "three": "^0.158.0",
+    "three": "^0.161.0",
     "typewriter-effect": "^2.22.0"
   },
   "devDependencies": {
