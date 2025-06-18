@@ -1,7 +1,7 @@
 import { Canvas, useLoader } from '@react-three/fiber';
 import { Stats, Environment, OrbitControls } from '@react-three/drei';
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
-import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader';
+import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
+import { MTLLoader } from 'three/addons/loaders/MTLLoader.js';
 
 function Scene() {
   const materials = useLoader(MTLLoader, '/uxi_3D.mtl');

@@ -6,7 +6,7 @@ const SvgMeditation = (props: React.SVGProps<SVGSVGElement>) => {
     const removeEventAndAnimate = () => {
       starShipElements.forEach(starShip => {
         const startShipHtml = starShip as HTMLElement;
-        startShipHtml.classList.add('animate-slideOutUp');
+        startShipHtml.classList.add('animate-slide-out-up');
         startShipHtml.addEventListener('animationend', () => {
           startShipHtml.classList.add('hidden');
         });

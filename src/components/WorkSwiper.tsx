@@ -60,7 +60,7 @@ const WorkSwiper = ({ works }: Props) => {
         })}
       </Swiper>
       <div className="absolute right-2 top-2 z-0 h-full w-full px-16">
-        <div className="h-full w-full rounded border border-sky-500" />
+        <div className="h-full w-full rounded-sm border border-sky-500" />
       </div>
     </div>
   );

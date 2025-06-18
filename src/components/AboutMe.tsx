@@ -6,9 +6,7 @@ interface Props {
 }
 
 const AboutMe = ({ birthday }: Props) => {
-  const { getTMarkdown } = useTranslatedMarkdown({
-    nameSpace: 'common',
-  });
+  const { getTMarkdown } = useTranslatedMarkdown({ nameSpace: 'common' });
   const description = getTMarkdown('aboutMe.description', { birthday });
 
   return (
@@ -16,20 +14,16 @@ const AboutMe = ({ birthday }: Props) => {
       className="flex h-screen items-center md:justify-center md:px-16 md:py-16"
       id="aboutMe"
     >
-      <div className="md:rounded-md md:border md:border-sky-500 md:bg-primary md:bg-opacity-90 md:p-4 md:shadow-2xl">
+      <div className="md:rounded-md md:border md:border-sky-500 md:bg-primary/90 md:p-4 md:shadow-2xl">
         <div
           className="pb-4 text-center text-4xl md:hidden"
-          dangerouslySetInnerHTML={{
-            __html: getTMarkdown('aboutMe.title'),
-          }}
+          dangerouslySetInnerHTML={{ __html: getTMarkdown('aboutMe.title') }}
         />
         <div className="lg:grid lg:grid-cols-4">
           <div className="md:col-span-3 md:flex md:items-center md:justify-center">
             <div
               className="md:text-2xl"
-              dangerouslySetInnerHTML={{
-                __html: description,
-              }}
+              dangerouslySetInnerHTML={{ __html: description }}
             />
           </div>
           <div>

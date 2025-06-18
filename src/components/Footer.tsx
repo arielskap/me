@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 const Footer = () => {
   const { locale } = useRouter();
   return (
-    <footer className="hidden md:absolute md:bottom-0 md:left-0 md:z-20 md:block md:w-full md:border-t-2 md:border-sky-500 md:bg-black md:bg-opacity-50 md:py-4">
+    <footer className="hidden md:absolute md:bottom-0 md:left-0 md:z-20 md:block md:w-full md:border-t-2 md:border-sky-500 md:bg-black/50 md:py-4">
       <div className="container relative mx-auto">
         <div className="flex items-center justify-center space-x-12">
           <a
@@ -18,7 +18,7 @@ const Footer = () => {
             href="mailto:arielvillagu@hotmail.com"
             target="_blank"
           >
-            <SvgEmail className="h-16 rounded border border-transparent fill-current object-contain p-1 text-white hover:border-sky-500 hover:bg-black hover:bg-opacity-90" />
+            <SvgEmail className="h-16 rounded-sm border border-transparent fill-current object-contain p-1 text-white hover:border-sky-500 hover:bg-black/90" />
           </a>
           <a
             aria-label="Telphone"
@@ -26,7 +26,7 @@ const Footer = () => {
             href="tel:+5215628253550"
             target="_blank"
           >
-            <SvgPhone className="h-16 rounded border border-transparent fill-current object-contain p-1 text-white hover:border-sky-500 hover:bg-black hover:bg-opacity-90" />
+            <SvgPhone className="h-16 rounded-sm border border-transparent fill-current object-contain p-1 text-white hover:border-sky-500 hover:bg-black/90" />
           </a>
           <a
             aria-label="Linkedin"
@@ -34,7 +34,7 @@ const Footer = () => {
             href="https://www.linkedin.com/in/ariel-villarreal"
             target="_blank"
           >
-            <SvgLinkedin className="h-16 rounded border border-transparent fill-current object-contain p-1 text-white hover:border-sky-500 hover:bg-black hover:bg-opacity-90" />
+            <SvgLinkedin className="h-16 rounded-sm border border-transparent fill-current object-contain p-1 text-white hover:border-sky-500 hover:bg-black/90" />
           </a>
           <a
             aria-label="Github"
@@ -42,7 +42,7 @@ const Footer = () => {
             href="https://github.com/arielskap"
             target="_blank"
           >
-            <SvgGithub className="h-16 rounded border border-transparent fill-current object-contain p-1 text-white hover:border-sky-500 hover:bg-black hover:bg-opacity-90" />
+            <SvgGithub className="h-16 rounded-sm border border-transparent fill-current object-contain p-1 text-white hover:border-sky-500 hover:bg-black/90" />
           </a>
         </div>
         <div className="absolute inset-y-0 right-4 hidden items-center md:flex">

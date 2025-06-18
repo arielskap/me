@@ -24,9 +24,7 @@ const getColorTag = (tag: string) => {
 };
 
 const WorkTarget = ({ href, alt, title, description, img, tags }: IWork) => {
-  const { getTMarkdown } = useTranslatedMarkdown({
-    nameSpace: 'common',
-  });
+  const { getTMarkdown } = useTranslatedMarkdown({ nameSpace: 'common' });
   return (
     <a
       className="flex h-96 md:h-full"
@@ -34,20 +32,20 @@ const WorkTarget = ({ href, alt, title, description, img, tags }: IWork) => {
       target="_blank"
       href={href}
     >
-      <figure className="relative flex w-full items-center justify-center rounded border border-sky-500 bg-black bg-opacity-50 p-1">
+      <figure className="relative flex w-full items-center justify-center rounded-sm border border-sky-500 bg-black/50 p-1">
         <Image
-          className="h-full w-full rounded object-cover md:max-w-xs"
+          className="h-full w-full rounded-sm object-cover md:max-w-xs"
           src={img}
           alt={alt}
           placeholder="blur"
         />
-        <div className="description-hidden-on-hover absolute left-0 top-0 z-20 flex h-full w-full flex-col items-center justify-center rounded bg-black bg-opacity-90 px-8 transition-opacity duration-500 hover:opacity-0">
+        <div className="description-hidden-on-hover absolute left-0 top-0 z-20 flex h-full w-full flex-col items-center justify-center rounded-sm bg-black/90 px-8 transition-opacity duration-500 hover:opacity-0">
           <div className="flex grow flex-col items-center justify-center">
             <div>
-              <h3 className="rounded bg-black bg-opacity-90 px-2 text-center text-2xl text-blue-300">
+              <h3 className="rounded bg-black/90 px-2 text-center text-2xl text-blue-300">
                 {title}
               </h3>
-              <p className="mt-2 rounded bg-black text-center transition-opacity duration-500">
+              <p className="mt-2 rounded-sm bg-black text-center transition-opacity duration-500">
                 {description}
               </p>
             </div>
@@ -65,7 +63,7 @@ const WorkTarget = ({ href, alt, title, description, img, tags }: IWork) => {
                   <span
                     key={`${title}-${tag}`}
                     className={classNames(
-                      'mt-2 rounded bg-black bg-opacity-90 px-2 text-center',
+                      'mt-2 rounded-sm bg-black/90 px-2 text-center',
                       getColorTag(tag)
                     )}
                   >

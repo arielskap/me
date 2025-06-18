@@ -61,7 +61,7 @@ const Index = () => {
   return (
     <section className="flex min-h-screen w-screen flex-col items-center justify-center bg-black">
       <div className="flex w-full grow items-center justify-center">
-        <div className="max-h-[42rem] w-full max-w-md overflow-y-auto rounded-md bg-white p-6">
+        <div className="max-h-168 w-full max-w-md overflow-y-auto rounded-md bg-white p-6">
           <div className="space-y-4 rounded-md bg-gray-50 p-2">
             {messages.map((message, index) => {
               const isAssistant = message.role === Role.Assistant;

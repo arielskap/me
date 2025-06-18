@@ -69,7 +69,7 @@ const Works = () => {
           className="pb-4 text-center text-4xl md:hidden"
           dangerouslySetInnerHTML={{ __html: getTMarkdown('projects.title') }}
         />
-        <div ref={divWorksBody} className="workTargets flex-grow">
+        <div ref={divWorksBody} className="workTargets grow">
           <Transition
             as="div"
             className="hidden md:grid md:grid-cols-3 md:gap-x-1 md:px-12 lg:gap-x-12"

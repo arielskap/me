@@ -27,7 +27,7 @@ const Page404: NextPage = () => {
           <div className="mt-6">
             <Link
               href="/"
-              className="inline-flex items-center rounded-md border border-transparent bg-white px-4 py-2 text-sm font-medium text-black text-opacity-75 sm:bg-opacity-75 sm:hover:bg-opacity-90"
+              className="inline-flex items-center rounded-md border border-transparent bg-white px-4 py-2 text-sm font-medium text-black/75 sm:hover:bg-black/90"
             >
               {t('cta')}
             </Link>
@@ -39,9 +39,7 @@ const Page404: NextPage = () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  return {
-    props: await serverSideTranslations(locale ?? 'en', ['notFound']),
-  };
+  return { props: await serverSideTranslations(locale ?? 'en', ['notFound']) };
 };
 
 export default Page404;

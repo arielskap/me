@@ -49,8 +49,8 @@ const Header = () => {
           navMenu.classList.replace('close-menu', 'open-menu');
           iconMenu.classList.replace('text-pink-500', 'text-white');
           navMenu.classList.replace(
-            'animate-slideOutUp',
-            'animate-slideInDown'
+            'animate-slide-out-up',
+            'animate-slide-in-down'
           );
           navMenu.classList.replace('hidden', 'block');
           divContainerMenu.current?.classList.replace(
@@ -61,8 +61,8 @@ const Header = () => {
           navMenu.classList.replace('open-menu', 'close-menu');
           iconMenu.classList.replace('text-white', 'text-pink-500');
           navMenu.classList.replace(
-            'animate-slideInDown',
-            'animate-slideOutUp'
+            'animate-slide-in-down',
+            'animate-slide-out-up'
           );
         }
       }
@@ -143,7 +143,7 @@ const Header = () => {
         </div>
       </div>
       <section
-        className="close-menu absolute left-0 top-0 z-10 hidden h-screen  w-screen transform-gpu animate-slideOutUp bg-secondary"
+        className="close-menu absolute left-0 top-0 z-10 hidden h-screen  w-screen transform-gpu animate-slide-out-up bg-secondary"
         ref={navBgMenu}
       >
         <div className="absolute left-0 top-0 -z-10 h-full w-full">
@@ -157,7 +157,7 @@ const Header = () => {
           </div>
         </div>
         <nav className="h-full w-full text-white">
-          <ul className="flex h-full flex-col items-center justify-center space-y-6 bg-black bg-opacity-40 text-5xl md:pb-24">
+          <ul className="flex h-full flex-col items-center justify-center space-y-6 bg-black/40 text-5xl md:pb-24">
             {(menu as Array<any>).map((option: any, i: number) => {
               return (
                 <li key={`button-menu-${i}`}>
