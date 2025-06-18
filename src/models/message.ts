@@ -1,4 +1,4 @@
-import { model, Schema, models } from "mongoose";
+import { model, Schema, models } from 'mongoose';
 
 const MessageSchema = new Schema(
   {
@@ -15,4 +15,4 @@ const MessageSchema = new Schema(
   }
 );
 
-export default models.Message || model("Message", MessageSchema);
+export default models.Message || model('Message', MessageSchema);

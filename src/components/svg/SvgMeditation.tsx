@@ -1,31 +1,35 @@
-import { useEffect } from 'react'
+import { useEffect } from 'react';
 
 const SvgMeditation = (props: React.SVGProps<SVGSVGElement>) => {
   useEffect(() => {
-    const starShipElements = document.querySelectorAll('.starShip')
+    const starShipElements = document.querySelectorAll('.starShip');
     const removeEventAndAnimate = () => {
-      starShipElements.forEach((starShip) => {
-        const startShipHtml = starShip as HTMLElement
-        startShipHtml.classList.add('animate-slideOutUp')
+      starShipElements.forEach(starShip => {
+        const startShipHtml = starShip as HTMLElement;
+        startShipHtml.classList.add('animate-slideOutUp');
         startShipHtml.addEventListener('animationend', () => {
-          startShipHtml.classList.add('hidden')
-        })
-      })
-    }
-    let flag = true
-    document.querySelector('body')?.addEventListener('touchmove', () => {
-      if (flag) {
-        removeEventAndAnimate()
-        flag = false
-      }
-    }, { once: true })
+          startShipHtml.classList.add('hidden');
+        });
+      });
+    };
+    let flag = true;
+    document.querySelector('body')?.addEventListener(
+      'touchmove',
+      () => {
+        if (flag) {
+          removeEventAndAnimate();
+          flag = false;
+        }
+      },
+      { once: true }
+    );
     setTimeout(() => {
       if (flag) {
-        removeEventAndAnimate()
-        flag = false
+        removeEventAndAnimate();
+        flag = false;
       }
-    }, 1500)
-  }, [])
+    }, 1500);
+  }, []);
 
   return (
     <svg
@@ -103,55 +107,61 @@ const SvgMeditation = (props: React.SVGProps<SVGSVGElement>) => {
         fill="#444053"
       />
       <path
-        className='starShip'
+        className="starShip"
         d="M236.5 569.96a38.24 38.24 0 00-7.5 2.14c-53.94 21.54-53.04 162.54-53.04 162.54h-15.88s-5-60.51-26.79-146.84c-19.63-77.67 60.88-147.28 77.23-160.48 1.84-1.47 2.86-2.25 2.86-2.25 81.09 29.8 23.12 144.89 23.12 144.89z"
         fill="#afc0e0"
       />
       <path
-        className='starShip'
+        className="starShip"
         d="M219.28 427.52c-1.87-.86-3.8-1.68-5.85-2.43 0 0-1 .78-2.86 2.25-16.35 13.2-96.86 82.81-77.23 160.48 21.79 86.33 26.74 146.82 26.74 146.82h8.93s-4.95-60.51-26.79-146.84c-19.55-77.31 60.18-146.66 77.06-160.28z"
         fill="#fff"
         opacity={0.2}
       />
       <path
-        className='starShip'
+        className="starShip"
         d="M504.04 587.82c-21.84 86.33-26.76 146.82-26.76 146.82h-15.91s1-147.36-56.73-163.81a31.53 31.53 0 00-3.81-.89s-58-115.09 23.12-144.87c0 0 .82.61 2.3 1.8 15.03 12.03 97.64 82.38 77.79 160.95z"
         fill="#afc0e0"
       />
       <path
-        className='starShip'
+        className="starShip"
         d="M236.5 569.96a38.24 38.24 0 00-7.5 2.14 979.21 979.21 0 01-18.48-144.76c1.84-1.47 2.86-2.25 2.86-2.25 81.09 29.78 23.12 144.87 23.12 144.87zM426.28 426.89a901 901 0 01-21.61 144 31.53 31.53 0 00-3.81-.89s-58-115.09 23.12-144.87c-.03-.04.79.57 2.3 1.76z"
         opacity={0.1}
       />
       <path
-        className='starShip'
+        className="starShip"
         d="M396.59 591.78q-8.4 33.14-19.69 68s-35.72 37.21-122 0c0 0-8.62-24.3-18.1-65.61-20.87-90.83-45.9-263.92 7.43-441.71A661.75 661.75 0 01311.41 0s45.56 52.31 79 152.43 54.72 248.07 6.18 439.35z"
         fill="#e3e8f4"
       />
-      <circle className='starShip' cx={318.66} cy={293.6} r={71.63} fill="#afc0e0" />
+      <circle
+        className="starShip"
+        cx={318.66}
+        cy={293.6}
+        r={71.63}
+        fill="#afc0e0"
+      />
       <path
-        className='starShip'
+        className="starShip"
         d="M369.46 293.64a50.8 50.8 0 01-83 39.29 51.33 51.33 0 01-9.52-10.33 50 50 0 01-3.28-5.39 50.7 50.7 0 01-5.79-23.57v-1.21a50.86 50.86 0 0137-47.72 52.53 52.53 0 0112.24-1.86h1.52a50.8 50.8 0 0150.83 50.79z"
         fill="#6c63ff"
       />
       <path
-        className='starShip'
+        className="starShip"
         d="M390.4 152.43c-81.27 38.91-146.22 0-146.22 0A661.75 661.75 0 01311.41 0s45.56 52.31 78.99 152.43zM396.59 591.78q-5.7 22.44-12.7 45.65-3.32 11.07-7 22.32s-35.72 37.21-122 0c0 0-2.8-7.89-7-22.32-3.14-10.9-7.05-25.51-11.13-43.29 0 0 32.12 13.71 77.71 13.71a214.11 214.11 0 0082.12-16.07z"
         fill="#afc0e0"
       />
       <path
-        className='starShip'
+        className="starShip"
         d="M383.89 637.43q-3.32 11.07-7 22.32s-35.72 37.21-122 0c0 0-2.8-7.89-7-22.32-.01 0 87.93 25.3 136 0z"
         fill="#e3e8f4"
       />
       <path
-        className='starShip'
+        className="starShip"
         d="M304.9 244.64l-.11.08-36.9 47.64v1.21a50.7 50.7 0 005.79 23.57l43.48-74.36zM316.68 287.64l-30.22 45.25a51.33 51.33 0 01-9.52-10.33l36-38.64z"
         fill="#fff"
         opacity={0.2}
       />
       <path
-        className='starShip'
+        className="starShip"
         d="M274.2 659.76s-8.62-24.31-18.1-65.61c-20.87-90.84-45.9-263.93 7.43-441.72a664.18 664.18 0 0158.85-138.09c-6.77-9.49-11-14.33-11-14.33a661.68 661.68 0 00-67.2 152.42c-53.33 177.79-28.3 350.88-7.43 441.72 9.48 41.3 18.1 65.61 18.1 65.61 34.09 14.69 60.28 17.77 79.5 16.13-16.42-1.25-36.36-5.88-60.15-16.13z"
         fill="#fff"
         opacity={0.2}
@@ -349,7 +359,7 @@ const SvgMeditation = (props: React.SVGProps<SVGSVGElement>) => {
         opacity={0.1}
       />
     </svg>
-  )
-}
+  );
+};
 
-export default SvgMeditation
+export default SvgMeditation;

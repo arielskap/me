@@ -1,13 +1,13 @@
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
-import Image from "next/image";
-import colors from "tailwindcss/colors";
-import { useSlider } from "../context/slider/Context";
-import spacePinkIMG from "../../public/spacePink.jpg";
-import { NextSeo } from "next-seo";
-import { LanguageIcon } from "@heroicons/react/24/outline";
-import { useRouter } from "next/router";
-import Link from "next/link";
-import useTranslatedMarkdown from "../hooks/useTranslatedMarkdown";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
+import colors from 'tailwindcss/colors';
+import { useSlider } from '../context/slider/Context';
+import spacePinkIMG from '../../public/spacePink.jpg';
+import { NextSeo } from 'next-seo';
+import { LanguageIcon } from '@heroicons/react/24/outline';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import useTranslatedMarkdown from '../hooks/useTranslatedMarkdown';
 
 let flag = false;
 
@@ -17,22 +17,20 @@ const Header = () => {
   const navBgMenu = useRef<HTMLElement>(null);
   const pIconMenu = useRef<HTMLParagraphElement>(null);
   const divContainerMenu = useRef<HTMLDivElement>(null);
-  const [title, setTitle] = useState("");
-  const { getT, i18n } = useTranslatedMarkdown({
-    nameSpace: "common",
-  });
+  const [title, setTitle] = useState('');
+  const { getT, i18n } = useTranslatedMarkdown({ nameSpace: 'common' });
   const [menu, setMenu] = useState(
-    getT("header.menu", { returnObjects: true })
+    getT('header.menu', { returnObjects: true })
   );
   const { locale } = useRouter();
 
   useEffect(() => {
     const swiper = state.swiper;
-    const newMenu = getT("header.menu", { returnObjects: true });
-    if (swiper && typeof swiper.activeIndex === "number") {
-      setTitle(newMenu[swiper.activeIndex].title);
-      swiper.on("slideChange", (localSwiper) => {
-        setTitle(newMenu[localSwiper.activeIndex].title);
+    const newMenu = getT('header.menu', { returnObjects: true });
+    if (swiper && typeof swiper.activeIndex === 'number') {
+      setTitle((newMenu[swiper.activeIndex] as any).title);
+      swiper.on('slideChange', localSwiper => {
+        setTitle((newMenu[localSwiper.activeIndex] as any).title);
       });
     }
     setMenu(newMenu);
@@ -48,23 +46,23 @@ const Header = () => {
       const iconMenu = pIconMenu.current;
       if (navMenu && iconMenu) {
         if (menuOpen) {
-          navMenu.classList.replace("close-menu", "open-menu");
-          iconMenu.classList.replace("text-pink-500", "text-white");
+          navMenu.classList.replace('close-menu', 'open-menu');
+          iconMenu.classList.replace('text-pink-500', 'text-white');
           navMenu.classList.replace(
-            "animate-slideOutUp",
-            "animate-slideInDown"
+            'animate-slideOutUp',
+            'animate-slideInDown'
           );
-          navMenu.classList.replace("hidden", "block");
+          navMenu.classList.replace('hidden', 'block');
           divContainerMenu.current?.classList.replace(
-            "bg-primary",
-            "bg-transparent"
+            'bg-primary',
+            'bg-transparent'
           );
         } else if (!menuOpen) {
-          navMenu.classList.replace("open-menu", "close-menu");
-          iconMenu.classList.replace("text-white", "text-pink-500");
+          navMenu.classList.replace('open-menu', 'close-menu');
+          iconMenu.classList.replace('text-white', 'text-pink-500');
           navMenu.classList.replace(
-            "animate-slideInDown",
-            "animate-slideOutUp"
+            'animate-slideInDown',
+            'animate-slideOutUp'
           );
         }
       }
@@ -74,15 +72,15 @@ const Header = () => {
   useEffect(() => {
     const hiddenMenu = () => {
       const navMenu = navBgMenu.current;
-      if (navMenu && navMenu.classList.contains("close-menu")) {
-        navBgMenu.current?.classList.replace("block", "hidden");
+      if (navMenu && navMenu.classList.contains('close-menu')) {
+        navBgMenu.current?.classList.replace('block', 'hidden');
         divContainerMenu.current?.classList.replace(
-          "bg-transparent",
-          "bg-primary"
+          'bg-transparent',
+          'bg-primary'
         );
       }
     };
-    navBgMenu.current?.addEventListener("animationend", hiddenMenu);
+    navBgMenu.current?.addEventListener('animationend', hiddenMenu);
   }, []);
 
   const handleChangePage = (numberPage: number, changeMenuState = true) => {
@@ -97,7 +95,7 @@ const Header = () => {
   return (
     <header className="sticky left-0 top-0 z-20 h-px w-full">
       <NextSeo
-        title={title || menu[0].title}
+        title={title || (menu[0] as any).title}
         description="Portfolio de Ariel Santiago Villarreal Gutierrez desarrollador web y movil"
       />
       <div
@@ -122,13 +120,13 @@ const Header = () => {
           </button>
         </div>
         <Link
-          href="/old"
-          locale={locale === "es" ? "en" : "es"}
+          href="/"
+          locale={locale === 'es' ? 'en' : 'es'}
           className="flex items-center rounded-lg border border-pink-500 px-2 py-1 text-white md:hidden"
         >
           <LanguageIcon className="mr-2 h-5 w-5" />
-          <span className="sr-only">Change to</span>{" "}
-          {locale === "es" ? "ES" : "EN"}
+          <span className="sr-only">Change to</span>{' '}
+          {locale === 'es' ? 'ES' : 'EN'}
         </Link>
         <div className="hidden md:block">
           <h2 className="text-center text-4xl text-white">{title}</h2>
@@ -138,7 +136,7 @@ const Header = () => {
             aria-label="menu"
             type="button"
             className={`menuIcon relative h-4 w-6 cursor-pointer ${
-              menuOpen ? "open" : "close"
+              menuOpen ? 'open' : 'close'
             }`}
             onClick={() => handleMenuState(setMenuOpen)}
           />
@@ -160,7 +158,7 @@ const Header = () => {
         </div>
         <nav className="h-full w-full text-white">
           <ul className="flex h-full flex-col items-center justify-center space-y-6 bg-black bg-opacity-40 text-5xl md:pb-24">
-            {menu.map((option, i) => {
+            {(menu as Array<any>).map((option: any, i: number) => {
               return (
                 <li key={`button-menu-${i}`}>
                   <button
@@ -178,7 +176,7 @@ const Header = () => {
       </section>
       <style jsx>{`
         .menuIcon:before {
-          content: "";
+          content: '';
           width: 100%;
           height: 3px;
           background-color: ${colors.white};
@@ -187,7 +185,7 @@ const Header = () => {
           transition: 0.4s cubic-bezier(0.785, 0.135, 0.15, 0.86);
         }
         .menuIcon:after {
-          content: "";
+          content: '';
           width: 100%;
           height: 3px;
           background-color: ${colors.white};

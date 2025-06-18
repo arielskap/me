@@ -5,5 +5,6 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   i18n,
+  transpilePackages: ["three"],
 };
 module.exports = nextConfig;

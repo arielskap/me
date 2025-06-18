@@ -1,22 +1,21 @@
-import SvgGithub from "./svg/SvgGithub";
-import WorkSwiper from "./WorkSwiper";
-import WorkTarget from "./WorkTarget";
-import { useEffect, useRef, useState } from "react";
-import { Transition } from "@headlessui/react";
-import { useSwiperSlide } from "swiper/react";
-import { useTranslation } from "next-i18next";
-import altaPreviaIMG from "../../public/altaPrevia.jpeg";
-import utopicxIMG from "../../public/utopicx.png";
-import ratabboyIMG from "../../public/ratabboy.png";
-import useTranslatedMarkdown from "../hooks/useTranslatedMarkdown";
+import SvgGithub from './svg/SvgGithub';
+import WorkSwiper from './WorkSwiper';
+import WorkTarget from './WorkTarget';
+import { useEffect, useRef, useState } from 'react';
+import { Transition } from '@headlessui/react';
+import { useSwiperSlide } from 'swiper/react';
+import useTranslatedMarkdown from '../hooks/useTranslatedMarkdown';
+import altaPreviaIMG from '../../public/altaPrevia.jpeg';
+import utopicxIMG from '../../public/utopicx.png';
+import ratabboyIMG from '../../public/ratabboy.png';
 
 const getImage = (title: string) => {
   switch (title) {
-    case "ALTA PREVIA":
+    case 'ALTA PREVIA':
       return altaPreviaIMG;
-    case "UTOPICX":
+    case 'UTOPICX':
       return utopicxIMG;
-    case "RATABBOY":
+    case 'RATABBOY':
       return ratabboyIMG;
     default:
       return utopicxIMG;
@@ -26,11 +25,11 @@ const getImage = (title: string) => {
 const getDelay = (i: number) => {
   switch (i) {
     case 0:
-      return "delay-0";
+      return 'delay-0';
     case 1:
-      return "delay-500";
+      return 'delay-500';
     case 2:
-      return "delay-1000";
+      return 'delay-1000';
   }
 };
 
@@ -39,22 +38,18 @@ const Works = () => {
   const swiperSlide = useSwiperSlide();
   const [isView, setIsView] = useState(swiperSlide.isActive);
   const { getT, getTMarkdown, i18n } = useTranslatedMarkdown({
-    nameSpace: "common",
+    nameSpace: 'common',
   });
-  const initApps = getT("projects.apps", { returnObjects: true }).map(
-    (app) => ({
-      ...app,
-      img: getImage(app.title),
-    })
-  );
+  const initApps = (
+    getT('projects.apps', { returnObjects: true }) as Array<any>
+  ).map((app: any) => ({ ...app, img: getImage(app.title) }));
   const [apps, setApps] = useState(initApps);
 
   useEffect(() => {
     setApps(
-      getT("projects.apps", { returnObjects: true }).map((app) => ({
-        ...app,
-        img: getImage(app.title),
-      }))
+      (getT('projects.apps', { returnObjects: true }) as Array<any>).map(
+        (app: any) => ({ ...app, img: getImage(app.title) })
+      )
     );
   }, [getT, i18n.language]);
 
@@ -72,16 +67,14 @@ const Works = () => {
       <div className="flex w-full flex-col md:w-auto md:p-4">
         <div
           className="pb-4 text-center text-4xl md:hidden"
-          dangerouslySetInnerHTML={{
-            __html: getTMarkdown("projects.title"),
-          }}
+          dangerouslySetInnerHTML={{ __html: getTMarkdown('projects.title') }}
         />
         <div ref={divWorksBody} className="workTargets flex-grow">
           <Transition
             className="hidden md:grid md:grid-cols-3 md:gap-x-1 md:px-12 lg:gap-x-12"
             show={isView}
           >
-            {apps.map((app, i) => {
+            {(apps as Array<any>).map((app: any, i: number) => {
               const delay = getDelay(i);
               return (
                 <Transition.Child

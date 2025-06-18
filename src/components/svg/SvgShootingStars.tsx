@@ -34,7 +34,7 @@ const SvgShootingStars = (props: React.SVGProps<SVGSVGElement>) => {
         fill="#ed6337"
       />
     </svg>
-  )
-}
+  );
+};
 
-export default SvgShootingStars
+export default SvgShootingStars;

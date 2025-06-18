@@ -1,8 +1,8 @@
-import { useTranslation } from "next-i18next";
-import useMarked from "./useMarked";
+import { useTranslation } from 'next-i18next';
+import useMarked from './useMarked';
 
 interface Props {
-  nameSpace: "common" | "notFound";
+  nameSpace: 'common' | 'notFound';
 }
 
 const useTranslatedMarkdown = ({ nameSpace }: Props) => {

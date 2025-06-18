@@ -1,16 +1,16 @@
-import Image from "next/image";
-import SvgLinkedin from "./svg/SvgLinkedin";
-import SvgPhone from "./svg/SvgPhone";
-import colors from "tailwindcss/colors";
-import SvgEmail from "./svg/SvgEmail";
-import SvgGithub from "./svg/SvgGithub";
-import meIMG from "../../public/me.jpg";
-import { useTranslation } from "next-i18next";
-import useTranslatedMarkdown from "../hooks/useTranslatedMarkdown";
+import Image from 'next/image';
+import SvgLinkedin from './svg/SvgLinkedin';
+import SvgPhone from './svg/SvgPhone';
+import colors from 'tailwindcss/colors';
+import SvgEmail from './svg/SvgEmail';
+import SvgGithub from './svg/SvgGithub';
+import meIMG from '../../public/me.jpg';
+import { useTranslation } from 'next-i18next';
+import useTranslatedMarkdown from '../hooks/useTranslatedMarkdown';
 
 const Contact = () => {
   const { getTMarkdown, getT } = useTranslatedMarkdown({
-    nameSpace: "common",
+    nameSpace: 'common',
   });
 
   return (
@@ -22,7 +22,7 @@ const Contact = () => {
         <div
           className="pb-4 text-center text-4xl md:hidden"
           dangerouslySetInnerHTML={{
-            __html: getTMarkdown("contact.title"),
+            __html: getTMarkdown('contact.title'),
           }}
         />
         <div className="contact-body-social">
@@ -96,13 +96,13 @@ const Contact = () => {
             <a
               rel="noopener"
               className="z-10 h-full w-full"
-              href={`/${getT("contact.fileName")}`}
+              href={`/${getT('contact.fileName')}`}
               target="blank"
             >
               <div className="rounded border border-sky-500 px-4 py-2 hover:border-sky-500 hover:bg-black hover:bg-opacity-90 md:border-sky-800">
                 <span
                   dangerouslySetInnerHTML={{
-                    __html: getTMarkdown("contact.cv"),
+                    __html: getTMarkdown('contact.cv'),
                   }}
                 />
               </div>

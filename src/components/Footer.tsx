@@ -1,10 +1,10 @@
-import SvgEmail from "./svg/SvgEmail";
-import SvgGithub from "./svg/SvgGithub";
-import SvgLinkedin from "./svg/SvgLinkedin";
-import SvgPhone from "./svg/SvgPhone";
-import { LanguageIcon } from "@heroicons/react/24/outline";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import SvgEmail from './svg/SvgEmail';
+import SvgGithub from './svg/SvgGithub';
+import SvgLinkedin from './svg/SvgLinkedin';
+import SvgPhone from './svg/SvgPhone';
+import { LanguageIcon } from '@heroicons/react/24/outline';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const Footer = () => {
   const { locale } = useRouter();
@@ -47,13 +47,13 @@ const Footer = () => {
         </div>
         <div className="absolute inset-y-0 right-4 hidden items-center md:flex">
           <Link
-            href="/old"
-            locale={locale === "es" ? "en" : "es"}
+            href="/"
+            locale={locale === 'es' ? 'en' : 'es'}
             className="flex items-center rounded-lg border border-pink-500 px-2 py-1 text-white"
           >
             <LanguageIcon className="mr-2 h-5 w-5" />
-            <span className="sr-only">Change to</span>{" "}
-            {locale === "es" ? "ES" : "EN"}
+            <span className="sr-only">Change to</span>{' '}
+            {locale === 'es' ? 'ES' : 'EN'}
           </Link>
         </div>
       </div>

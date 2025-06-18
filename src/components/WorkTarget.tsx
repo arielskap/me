@@ -1,31 +1,31 @@
-import Image from "next/image";
-import { IWork } from "../../@types";
-import { Tag } from "../lib/enums";
-import { classNames } from "../lib/functions";
-import useTranslatedMarkdown from "../hooks/useTranslatedMarkdown";
+import Image from 'next/image';
+import { IWork } from '../../@types';
+import { Tag } from '../lib/enums';
+import { classNames } from '../lib/functions';
+import useTranslatedMarkdown from '../hooks/useTranslatedMarkdown';
 
 const getColorTag = (tag: string) => {
   switch (tag) {
     case Tag.TYPESCRIPT:
-      return "bg-blue-500";
+      return 'bg-blue-500';
     case Tag.MONGODB:
-      return "bg-green-500";
+      return 'bg-green-500';
     case Tag.NESTJS:
-      return "bg-red-500";
+      return 'bg-red-500';
     case Tag.NEXTJS:
-      return "bg-violet-500";
+      return 'bg-violet-500';
     case Tag.TAILWINDCSS:
-      return "bg-emerald-500";
-    case Tag["REACT NATIVE"]:
-      return "bg-cyan-500";
+      return 'bg-emerald-500';
+    case Tag['REACT NATIVE']:
+      return 'bg-cyan-500';
     default:
-      return "bg-gray-500";
+      return 'bg-gray-500';
   }
 };
 
 const WorkTarget = ({ href, alt, title, description, img, tags }: IWork) => {
   const { getTMarkdown } = useTranslatedMarkdown({
-    nameSpace: "common",
+    nameSpace: 'common',
   });
   return (
     <a
@@ -56,16 +56,16 @@ const WorkTarget = ({ href, alt, title, description, img, tags }: IWork) => {
             <div
               className="text-center text-lg font-medium"
               dangerouslySetInnerHTML={{
-                __html: getTMarkdown("projects.technologies"),
+                __html: getTMarkdown('projects.technologies'),
               }}
             />
             <div className="flex flex-col">
-              {tags.map((tag) => {
+              {tags.map(tag => {
                 return (
                   <span
                     key={`${title}-${tag}`}
                     className={classNames(
-                      "mt-2 rounded bg-black bg-opacity-90 px-2 text-center",
+                      'mt-2 rounded bg-black bg-opacity-90 px-2 text-center',
                       getColorTag(tag)
                     )}
                   >

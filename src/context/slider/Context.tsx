@@ -1,7 +1,7 @@
-import { createContext, Dispatch, useContext, useReducer } from "react";
-import { SliderAction } from "./actions";
-import { SliderReducer } from "./reducer";
-import { SliderState, initialSliderState } from "./state";
+import { createContext, Dispatch, useContext, useReducer } from 'react';
+import { SliderAction } from './actions';
+import { SliderReducer } from './reducer';
+import { SliderState, initialSliderState } from './state';
 
 const SliderContext = createContext<{
   state: SliderState;
@@ -24,7 +24,7 @@ const useSlider = () => {
   const context = useContext(SliderContext);
 
   if (context === undefined) {
-    throw new Error("useSlider must be used within a SliderProvider");
+    throw new Error('useSlider must be used within a SliderProvider');
   }
 
   return { state: context.state, dispatch: context.dispatch };

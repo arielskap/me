@@ -1,9 +1,9 @@
-import SvgMeditation from "./svg/SvgMeditation";
-import useTranslatedMarkdown from "../hooks/useTranslatedMarkdown";
+import SvgMeditation from './svg/SvgMeditation';
+import useTranslatedMarkdown from '../hooks/useTranslatedMarkdown';
 
 const Home = () => {
   const { getTMarkdown } = useTranslatedMarkdown({
-    nameSpace: "common",
+    nameSpace: 'common',
   });
 
   return (
@@ -13,7 +13,7 @@ const Home = () => {
           <div
             className="text-blue-300"
             dangerouslySetInnerHTML={{
-              __html: getTMarkdown("home.init"),
+              __html: getTMarkdown('home.init'),
             }}
           />
           <h1 className="text-2xl sm:text-3xl md:text-7xl">
@@ -22,13 +22,13 @@ const Home = () => {
           <div
             className="pb-1 text-red-300 sm:pb-4 md:text-2xl"
             dangerouslySetInnerHTML={{
-              __html: getTMarkdown("home.subTitle"),
+              __html: getTMarkdown('home.subTitle'),
             }}
           />
           <div
             className="description pb-1 text-blue-300 sm:pb-4 md:text-3xl"
             dangerouslySetInnerHTML={{
-              __html: getTMarkdown("home.description"),
+              __html: getTMarkdown('home.description'),
             }}
           />
         </div>

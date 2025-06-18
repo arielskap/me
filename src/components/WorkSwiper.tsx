@@ -1,11 +1,13 @@
-import { useRef, useState, useEffect } from "react";
-import SwiperType, { Autoplay, Navigation } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import WorkTarget from "./WorkTarget";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/autoplay";
-import { IWork } from "../../@types";
+import { useRef, useState, useEffect } from 'react';
+import SwiperType from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Autoplay } from 'swiper/modules';
+import WorkTarget from './WorkTarget';
+import { IWork } from '../../@types';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/autoplay';
 
 interface Props {
   works: Array<IWork>;
@@ -18,11 +20,11 @@ const WorkSwiper = ({ works }: Props) => {
   useEffect(() => {
     if (divSwiper.current && swiper) {
       const observer = new IntersectionObserver(
-        (allElements) => {
+        allElements => {
           const isIntersecting = (element: IntersectionObserverEntry) => {
             return element.isIntersecting;
           };
-          allElements.forEach((element) => {
+          allElements.forEach(element => {
             if (isIntersecting(element)) {
               swiper.autoplay?.start();
             } else {
@@ -43,11 +45,11 @@ const WorkSwiper = ({ works }: Props) => {
         navigation
         autoplay
         spaceBetween={50}
-        onInit={(thisSwiper) => {
+        onInit={thisSwiper => {
           setSwiper(thisSwiper);
         }}
       >
-        {works.map((work) => {
+        {works.map(work => {
           return (
             <SwiperSlide key={`slide-works-${work.title}`}>
               <div className="px-16 md:w-full md:max-w-xs">

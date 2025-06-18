@@ -1,204 +1,122 @@
-import {
-  MicrophoneIcon,
-  PaperAirplaneIcon,
-  PauseCircleIcon,
-} from "@heroicons/react/24/outline";
-import { useEffect, useRef, useState } from "react";
-import { classNames } from "../lib/functions";
-import { Role } from "../lib/enums";
-import { IMessage } from "../../@types";
-import Typewriter from "typewriter-effect";
-import Link from "next/link";
-import useSpeechRecognition from "../hooks/useSpeechRecognition";
+import { useEffect, useRef } from 'react';
+import { Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import Layout from '../components/Layout';
+import Home from '../components/Home';
+import Works from '../components/Works';
+import { useSlider } from '../context/slider/Context';
+import AboutMe from '../components/AboutMe';
+import Contact from '../components/Contact';
+import { GetStaticProps, NextPage } from 'next';
+import { calcBirthday } from '../lib/functions';
+import SvgArrowBottom from '../components/svg/SvgArrowBottom';
+import { SliderActionKind } from '../context/slider/actions';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-const Index = () => {
-  const [messages, setMessages] = useState<Array<IMessage>>([]);
-  const [question, setQuestion] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const textAreaRef = useRef<HTMLTextAreaElement>(null);
-  const {
-    stopSpeechRecognition,
-    startSpeechRecognition,
-    state: { transcript, status: statusSpeechRecognition },
-  } = useSpeechRecognition();
+import 'swiper/css';
+import 'swiper/css/navigation';
 
-  const pushMessage = async (message: IMessage) => {
-    setIsLoading(true);
-    setQuestion("");
-    setMessages((prevState) => [...prevState, message]);
-    const response = await fetch("/api/message", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        messages: [...messages, message],
-      }),
-    });
-    const data = await response.json();
-    setMessages((prevState) => [
-      ...prevState,
-      {
-        role: Role.Assistant,
-        content: data.message,
-      },
-    ]);
-  };
+interface Props {
+  birthday: number;
+}
+
+const Old: NextPage<Props> = ({ birthday }) => {
+  const buttonArrowBottom = useRef<HTMLButtonElement>(null);
+  const { state, dispatch } = useSlider();
 
   useEffect(() => {
-    if (!isLoading) {
-      textAreaRef.current?.focus();
+    if (state.swiper) {
+      state.swiper.on('slideChange', swiperLocal => {
+        if (swiperLocal.currentBreakpoint !== 768) {
+          const buttonArrow = buttonArrowBottom.current;
+          if (buttonArrow) {
+            if (swiperLocal.activeIndex === 0) {
+              buttonArrow.classList.add('buttonArrowBottomAnimation');
+            } else {
+              buttonArrow.classList.remove('buttonArrowBottomAnimation');
+            }
+            if (swiperLocal.isEnd) {
+              buttonArrow.classList.add('opacity-0');
+            } else if (buttonArrow.classList.contains('opacity-0')) {
+              buttonArrow.classList.remove('opacity-0');
+            }
+          }
+        }
+      });
     }
-  }, [isLoading]);
-
-  useEffect(() => {
-    if (transcript) {
-      setQuestion(transcript);
-    }
-  }, [transcript]);
-
-  useEffect(() => {
-    if (textAreaRef.current) {
-      const textarea = textAreaRef.current;
-      textarea.style.height = "auto";
-      textarea.style.height = textarea.scrollHeight + "px";
-    }
-  }, [question]);
+  }, [state.swiper]);
 
   return (
-    <section className="flex min-h-screen w-screen flex-col items-center justify-center bg-black">
-      <div className="flex w-full grow items-center justify-center">
-        <div className="max-h-[42rem] w-full max-w-md overflow-y-auto rounded-md bg-white p-6">
-          <div className="space-y-4 rounded-md bg-gray-50 p-2">
-            {messages.map((message, index) => {
-              const isAssistant = message.role === Role.Assistant;
-              return (
-                <div
-                  key={index}
-                  className={classNames(
-                    "flex",
-                    isAssistant ? "justify-start" : "justify-end"
-                  )}
-                >
-                  {isAssistant ? (
-                    <div className="block w-max rounded-md bg-blue-200 px-1 py-0.5">
-                      <Typewriter
-                        options={{
-                          delay: 25,
-                        }}
-                        onInit={(typewriter) => {
-                          typewriter
-                            .typeString(message.content)
-                            .callFunction((state) => {
-                              const cursorElement = state.elements.cursor;
-                              cursorElement.style.display = "none";
-                              setIsLoading(false);
-                            })
-                            .start();
-                        }}
-                      />
-                    </div>
-                  ) : (
-                    <p className="block w-max rounded-md bg-green-200 px-1 py-0.5">
-                      {message.content}
-                    </p>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-          <form
-            className="mt-2 border-t-2 border-amber-200"
-            onSubmit={async (e) => {
-              e.preventDefault();
-              await pushMessage({
-                role: Role.User,
-                content: question,
-              });
+    <Layout>
+      <section className="container relative mx-auto h-screen px-2 text-white">
+        <Swiper
+          modules={[Navigation]}
+          direction="vertical"
+          onInit={thisSwiper => {
+            dispatch({
+              type: SliderActionKind.SET_SWIPER,
+              payload: { swiper: thisSwiper },
+            });
+          }}
+          navigation
+          grabCursor
+          breakpoints={{ 768: { spaceBetween: 30, direction: 'horizontal' } }}
+        >
+          <SwiperSlide>
+            <Home />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Works />
+          </SwiperSlide>
+          <SwiperSlide>
+            <AboutMe birthday={birthday} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Contact />
+          </SwiperSlide>
+        </Swiper>
+        <div className="fixed bottom-0 left-0 z-10 flex w-full justify-center md:hidden">
+          <button
+            aria-label="Change Slide"
+            ref={buttonArrowBottom}
+            className="buttonArrowBottomAnimation text-sky-500 transition-opacity"
+            type="button"
+            onClick={() => {
+              state.swiper?.slideNext();
             }}
           >
-            <label
-              htmlFor="name"
-              className="sr-only block text-sm font-medium leading-6 text-gray-900"
-            >
-              Pregunta
-            </label>
-            <div className="mt-2 flex">
-              <div className="relative grow">
-                <textarea
-                  ref={textAreaRef}
-                  name="name"
-                  id="name"
-                  required
-                  value={question}
-                  onChange={(e) => setQuestion(e.target.value)}
-                  className="peer block w-full resize-none border-0 bg-gray-50 px-1 py-1.5 text-gray-900 focus:ring-0 disabled:opacity-50 sm:text-sm sm:leading-6"
-                  placeholder="Hola! A que te dedicas?"
-                  disabled={isLoading}
-                  rows={1}
-                />
-                <div
-                  className="absolute inset-x-0 bottom-0 border-t border-gray-300 peer-focus:border-t-2 peer-focus:border-indigo-600"
-                  aria-hidden="true"
-                />
-              </div>
-              {question ||
-              statusSpeechRecognition === "not supported" ||
-              statusSpeechRecognition === "denied" ||
-              statusSpeechRecognition === "stop" ? (
-                <button
-                  type="submit"
-                  className="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                  disabled={isLoading}
-                >
-                  <PaperAirplaneIcon
-                    className="-ml-0.5 h-5 w-5 text-gray-400"
-                    aria-hidden="true"
-                  />
-                  Enviar
-                </button>
-              ) : (
-                <>
-                  {statusSpeechRecognition === "start" ? (
-                    <button
-                      type="button"
-                      onClick={stopSpeechRecognition}
-                      className="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                      disabled={isLoading}
-                    >
-                      <PauseCircleIcon
-                        className="-ml-0.5 h-5 w-5 text-gray-400"
-                        aria-hidden="true"
-                      />
-                      Stop
-                    </button>
-                  ) : (
-                    <button
-                      type="button"
-                      onClick={startSpeechRecognition}
-                      className="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                      disabled={isLoading}
-                    >
-                      <MicrophoneIcon
-                        className="-ml-0.5 h-5 w-5 text-gray-400"
-                        aria-hidden="true"
-                      />
-                      Start
-                    </button>
-                  )}
-                </>
-              )}
-            </div>
-          </form>
+            <SvgArrowBottom
+              style={{ strokeWidth: 8 }}
+              className="w-10 stroke-current object-contain"
+            />
+          </button>
         </div>
-      </div>
-      <div className="pb-8">
-        <Link className="text-white underline" href="/old">
-          ir a la versión web antigua
-        </Link>
-      </div>
-    </section>
+      </section>
+      <style jsx>{`
+        .buttonArrowBottomAnimation {
+          animation: translateY 1.5s linear infinite;
+        }
+        @keyframes translateY {
+          0% {
+            transform: translateY(-1rem);
+          }
+          100% {
+            transform: translateY(0rem);
+          }
+        }
+      `}</style>
+    </Layout>
   );
 };
 
-export default Index;
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const birthday = calcBirthday('03/09/1998');
+  return {
+    props: {
+      birthday,
+      ...(await serverSideTranslations(locale ?? 'en', ['common'])),
+    },
+  };
+};
+
+export default Old;

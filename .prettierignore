@@ -1,0 +1,9 @@
+node_modules
+.next
+build
+dist
+coverage
+*.log
+yarn.lock
+package-lock.json
+public/locales 

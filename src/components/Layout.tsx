@@ -1,10 +1,10 @@
-import { NextSeo } from "next-seo";
-import Image from "next/image";
-import Header from "./Header";
-import Footer from "./Footer";
-import Head from "next/head";
-import SpaceBgIMG from "../../public/spaceBg.jpg";
-import { ReactNode } from "react";
+import { NextSeo } from 'next-seo';
+import Image from 'next/image';
+import Header from './Header';
+import Footer from './Footer';
+import Head from 'next/head';
+import SpaceBgIMG from '../../public/spaceBg.jpg';
+import { ReactNode } from 'react';
 
 interface Props {
   children: ReactNode;

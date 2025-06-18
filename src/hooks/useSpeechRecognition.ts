@@ -1,38 +1,38 @@
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import { checkMicrophonePermission } from "../lib/functions";
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { checkMicrophonePermission } from '../lib/functions';
 
 type SpeechRecognitionStatus =
-  | "not initialized"
-  | "not supported"
-  | "denied"
-  | "initialized"
-  | "stop"
-  | "start"
-  | "recording";
+  | 'not initialized'
+  | 'not supported'
+  | 'denied'
+  | 'initialized'
+  | 'stop'
+  | 'start'
+  | 'recording';
 
 const useSpeechRecognition = () => {
   const [status, setStatus] =
-    useState<SpeechRecognitionStatus>("not initialized");
-  const [transcript, setTranscript] = useState("");
+    useState<SpeechRecognitionStatus>('not initialized');
+  const [transcript, setTranscript] = useState('');
   const [speechRecognition, setSpeechRecognition] = useState<any>(null);
   const { locale } = useRouter();
 
   useEffect(() => {
     checkMicrophonePermission()
-      .then((hasPermission) => {
+      .then(hasPermission => {
         if (!hasPermission) {
-          setStatus("denied");
+          setStatus('denied');
         }
       })
       .catch(() => {
-        setStatus("denied");
+        setStatus('denied');
       });
   }, []);
 
   useEffect(() => {
-    if (!("webkitSpeechRecognition" in window)) {
-      return setStatus("not supported");
+    if (!('webkitSpeechRecognition' in window)) {
+      return setStatus('not supported');
     }
     const speechRecognition = window.webkitSpeechRecognition;
     const recognition = new speechRecognition();
@@ -44,16 +44,16 @@ const useSpeechRecognition = () => {
       for (let i = event.resultIndex; i < event.results.length; ++i) {
         if (event.results[i].isFinal) {
           setTranscript(event.results[i][0].transcript);
-          setStatus("initialized");
+          setStatus('initialized');
         }
       }
     };
 
     recognition.onerror = (event: any) => {
-      console.error("Error occurred in recognition: " + event.error);
+      console.error('Error occurred in recognition: ' + event.error);
     };
 
-    setStatus("initialized");
+    setStatus('initialized');
     setSpeechRecognition(recognition);
   }, []);
 
@@ -65,21 +65,21 @@ const useSpeechRecognition = () => {
 
   const startSpeechRecognition = () => {
     checkMicrophonePermission()
-      .then((hasPermission) => {
+      .then(hasPermission => {
         if (!hasPermission) {
-          setStatus("denied");
+          setStatus('denied');
         } else {
-          setStatus("start");
+          setStatus('start');
           speechRecognition && speechRecognition.start();
         }
       })
       .catch(() => {
-        setStatus("denied");
+        setStatus('denied');
       });
   };
 
   const stopSpeechRecognition = () => {
-    setStatus("stop");
+    setStatus('stop');
     speechRecognition && speechRecognition.stop();
   };
 

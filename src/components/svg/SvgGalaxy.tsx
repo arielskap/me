@@ -1,10 +1,6 @@
 const SvgGalaxy = (props: React.SVGProps<SVGSVGElement>) => {
   return (
-    <svg
-      viewBox="0 0 512 512"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
+    <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path
         d="M512 256c0 141.385-114.615 256-256 256S0 397.385 0 256 114.615 0 256 0s256 114.615 256 256z"
         fill="#19305c"
@@ -54,7 +50,7 @@ const SvgGalaxy = (props: React.SVGProps<SVGSVGElement>) => {
         fill="#cc59a8"
       />
     </svg>
-  )
-}
+  );
+};
 
-export default SvgGalaxy
+export default SvgGalaxy;

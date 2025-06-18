@@ -1,5 +1,5 @@
-import SvgGalaxy from "./svg/SvgGalaxy";
-import useTranslatedMarkdown from "../hooks/useTranslatedMarkdown";
+import SvgGalaxy from './svg/SvgGalaxy';
+import useTranslatedMarkdown from '../hooks/useTranslatedMarkdown';
 
 interface Props {
   birthday: number;
@@ -7,9 +7,9 @@ interface Props {
 
 const AboutMe = ({ birthday }: Props) => {
   const { getTMarkdown } = useTranslatedMarkdown({
-    nameSpace: "common",
+    nameSpace: 'common',
   });
-  const description = getTMarkdown("aboutMe.description", { birthday });
+  const description = getTMarkdown('aboutMe.description', { birthday });
 
   return (
     <section
@@ -20,7 +20,7 @@ const AboutMe = ({ birthday }: Props) => {
         <div
           className="pb-4 text-center text-4xl md:hidden"
           dangerouslySetInnerHTML={{
-            __html: getTMarkdown("aboutMe.title"),
+            __html: getTMarkdown('aboutMe.title'),
           }}
         />
         <div className="lg:grid lg:grid-cols-4">
@@ -43,7 +43,7 @@ const AboutMe = ({ birthday }: Props) => {
             <div
               className="text-center italic"
               dangerouslySetInnerHTML={{
-                __html: getTMarkdown("aboutMe.quote"),
+                __html: getTMarkdown('aboutMe.quote'),
               }}
             />
           </div>
