@@ -1,4 +1,4 @@
-import { createContext, Dispatch, useContext, useReducer } from 'react';
+import { createContext, Dispatch, useContext, useReducer, type JSX } from 'react';
 import { SliderAction } from './actions';
 import { SliderReducer } from './reducer';
 import { SliderState, initialSliderState } from './state';
