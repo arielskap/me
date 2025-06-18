@@ -2,7 +2,7 @@ import SvgGithub from './svg/SvgGithub';
 import WorkSwiper from './WorkSwiper';
 import WorkTarget from './WorkTarget';
 import { useEffect, useRef, useState } from 'react';
-import { Transition } from '@headlessui/react';
+import { Transition, TransitionChild } from '@headlessui/react';
 import { useSwiperSlide } from 'swiper/react';
 import useTranslatedMarkdown from '../hooks/useTranslatedMarkdown';
 import altaPreviaIMG from '../../public/altaPrevia.jpeg';
@@ -71,13 +71,15 @@ const Works = () => {
         />
         <div ref={divWorksBody} className="workTargets flex-grow">
           <Transition
+            as="div"
             className="hidden md:grid md:grid-cols-3 md:gap-x-1 md:px-12 lg:gap-x-12"
             show={isView}
           >
             {(apps as Array<any>).map((app: any, i: number) => {
               const delay = getDelay(i);
               return (
-                <Transition.Child
+                <TransitionChild
+                  as="div"
                   className="relative"
                   key={`swiper-desktop-work-${app.title}`}
                   enter={`transition-all ease-out duration-1000 ${delay}`}
@@ -85,7 +87,7 @@ const Works = () => {
                   enterTo="opacity-100 translate-y-0"
                 >
                   <WorkTarget {...app} />
-                </Transition.Child>
+                </TransitionChild>
               );
             })}
           </Transition>
