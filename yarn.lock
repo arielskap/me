@@ -963,7 +963,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-three/drei@npm:^9.99.0":
+"@react-three/drei@npm:^9.122.0":
   version: 9.122.0
   resolution: "@react-three/drei@npm:9.122.0"
   dependencies:
@@ -1001,7 +1001,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-three/fiber@npm:^8.15.0":
+"@react-three/fiber@npm:^8.18.0":
   version: 8.18.0
   resolution: "@react-three/fiber@npm:8.18.0"
   dependencies:
@@ -5573,8 +5573,8 @@ __metadata:
   dependencies:
     "@headlessui/react": "npm:^2.2.4"
     "@heroicons/react": "npm:^2.2.0"
-    "@react-three/drei": "npm:^9.99.0"
-    "@react-three/fiber": "npm:^8.15.0"
+    "@react-three/drei": "npm:^9.122.0"
+    "@react-three/fiber": "npm:^8.18.0"
     "@types/marked": "npm:^6.0.0"
     "@types/node": "npm:^24.0.3"
     "@types/prettier": "npm:^3.0.0"
